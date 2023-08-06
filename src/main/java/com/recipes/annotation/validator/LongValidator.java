@@ -17,8 +17,7 @@ public class LongValidator implements ConstraintValidator<com.recipes.annotation
             return false;
         }
         try {
-            Long.parseLong(s);
-            return true;
+            return Long.parseLong(s)<0;
         } catch (NumberFormatException e){
             return false;
         }

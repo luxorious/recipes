@@ -13,14 +13,13 @@ public class DoubleParsingValidator implements ConstraintValidator<DoubleValidat
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if (s==null){
+        if (s == null) {
             return false;
         }
-        try{
-            Double.parseDouble(s);
-            return true;
-        } catch (NumberFormatException e){
-            return false;
-        }
+            try {
+                return Double.parseDouble(s)<0;
+            } catch (NumberFormatException e) {
+                return false;
+            }
     }
 }
