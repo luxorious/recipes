@@ -1,7 +1,7 @@
 package com.recipes.mapper;
 
-import com.recipes.DTO.CreateReceiptDTO;
-import com.recipes.DTO.ReceiptDTO;
+import com.recipes.dto.CreateReceiptDTO;
+import com.recipes.dto.ReceiptDTO;
 import com.recipes.entity.Receipt;
 import com.recipes.exceptions.ValidationException;
 

@@ -1,4 +1,4 @@
-package com.recipes.DTO;
+package com.recipes.dto;
 
 import com.recipes.annotation.*;
 import lombok.Data;

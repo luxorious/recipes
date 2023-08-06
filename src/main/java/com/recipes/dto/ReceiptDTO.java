@@ -1,6 +1,10 @@
-package com.recipes.DTO;
+package com.recipes.dto;
 
-import com.recipes.annotation.*;
+import com.recipes.annotation.CategoriesValidator;
+import com.recipes.annotation.CountriesValidator;
+import com.recipes.annotation.DishTypeValidator;
+import com.recipes.annotation.DoubleValidator;
+import com.recipes.annotation.LongValidator;
 import lombok.Data;
 
 import java.util.List;
