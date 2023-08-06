@@ -27,16 +27,16 @@ public class Receipt {
     @Column(name = "category_id")
     private Long categoryId;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 100)
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", length = -1)
     private String description;
 
-    @Column(name = "instruction")
+    @Column(name = "instruction", length = -1)
     private String instruction;
 
-    @Column(name = "ingredients")
+    @Column(name = "ingredients", length = -1)
     private String ingredients;
 
     @Column(name = "cooking_time")
@@ -53,7 +53,7 @@ public class Receipt {
     @Enumerated(EnumType.STRING)
     private DishType dishType;
 
-    @Column(name = "image")
+    @Column(name = "image", length = -1)
     private String imageLink;
 
     @Column(name = "categories")
