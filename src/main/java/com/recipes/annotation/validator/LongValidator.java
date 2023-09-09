@@ -1,13 +1,13 @@
-package com.recipes.annotation.validator;
+package com.example.expertprojectbackend.annotation.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
-public class LongValidator implements ConstraintValidator<com.recipes.annotation.LongValidator, String> {
+public class LongValidator implements ConstraintValidator<com.example.expertprojectbackend.annotation.LongValidator, String> {
 
     @Override
-    public void initialize(com.recipes.annotation.LongValidator constraintAnnotation) {
+    public void initialize(com.example.expertprojectbackend.annotation.LongValidator constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 

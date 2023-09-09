@@ -1,4 +1,4 @@
-package com.recipes.annotation;
+package com.example.expertprojectbackend.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

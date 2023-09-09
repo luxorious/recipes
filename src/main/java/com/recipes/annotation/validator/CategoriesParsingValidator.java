@@ -1,6 +1,6 @@
-package com.recipes.annotation.validator;
+package com.example.expertprojectbackend.annotation.validator;
 
-import com.recipes.annotation.CategoriesValidator;
+import com.example.expertprojectbackend.annotation.CategoriesValidator;
 import com.recipes.entity.enumerations.Categories;
 
 import javax.validation.ConstraintValidator;

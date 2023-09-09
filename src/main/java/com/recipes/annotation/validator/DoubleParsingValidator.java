@@ -1,6 +1,6 @@
-package com.recipes.annotation.validator;
+package com.example.expertprojectbackend.annotation.validator;
 
-import com.recipes.annotation.DoubleValidator;
+import com.example.expertprojectbackend.annotation.DoubleValidator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -16,10 +16,10 @@ public class DoubleParsingValidator implements ConstraintValidator<DoubleValidat
         if (s == null) {
             return false;
         }
-            try {
-                return Double.parseDouble(s)<0;
-            } catch (NumberFormatException e) {
-                return false;
-            }
+        try {
+            return Double.parseDouble(s) < 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

@@ -1,7 +1,6 @@
-package com.recipes.annotation.validator;
+package com.example.expertprojectbackend.annotation.validator;
 
-import com.recipes.annotation.CountriesValidator;
-import com.recipes.entity.enumerations.Countries;
+import com.example.expertprojectbackend.annotation.CountriesValidator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -19,7 +18,7 @@ public class CountriesParsingValidator implements ConstraintValidator<CountriesV
         }
 
         try {
-            Countries.valueOf(s);
+            Country.valueOf(s);
             return true;
         } catch (IllegalArgumentException e) {
             return false;

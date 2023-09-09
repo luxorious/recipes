@@ -1,7 +1,6 @@
 package com.recipes.service.component.interfaces;
 
 import com.recipes.entity.enumerations.Categories;
-import com.recipes.entity.enumerations.Countries;
 import com.recipes.entity.enumerations.DishType;
 import com.recipes.exceptions.ValidationException;
 
@@ -40,7 +39,7 @@ public interface DataValidator {
      * @return The converted Countries enumeration value.
      * @throws ValidationException If the value is not a valid Countries enumeration.
      */
-    Countries checkCountries(String value);
+    Country checkCountries(String value);
 
     /**
      * Validates and converts a string value to a DishType enumeration.
