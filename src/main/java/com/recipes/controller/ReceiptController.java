@@ -2,7 +2,6 @@ package com.recipes.controller;
 
 import com.recipes.dto.CreateReceiptDTO;
 import com.recipes.dto.ReceiptDTO;
-import com.recipes.entity.Receipt;
 import com.recipes.service.interfaces.ReceiptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,7 @@ public class ReceiptController {
     private final ReceiptService receiptService;
 
     @GetMapping("/get-all")
-    public List<Receipt> findAll(){
+    public List<ReceiptDTO> findAll(){
         return receiptService.findAll();
     }
 
