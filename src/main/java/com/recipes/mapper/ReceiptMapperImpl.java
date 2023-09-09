@@ -2,16 +2,20 @@ package com.recipes.mapper;
 
 import com.recipes.dto.CreateReceiptDTO;
 import com.recipes.dto.ReceiptDTO;
+import com.recipes.entity.DishCategory;
 import com.recipes.entity.Receipt;
+import com.recipes.entity.Recipe;
 import com.recipes.entity.User;
 import com.recipes.entity.enumerations.Categories;
-import com.recipes.entity.enumerations.Countries;
 import com.recipes.entity.enumerations.DishType;
 import com.recipes.repository.UserRepository;
 import com.recipes.service.component.interfaces.Converter;
+import jakarta.persistence.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
 
 /**
  * Implementation of the {@link ReceiptMapper} interface for mapping between
@@ -31,7 +35,7 @@ public class ReceiptMapperImpl implements ReceiptMapper {
      * @return The corresponding {@link ReceiptDTO} DTO.
      */
     @Override
-    public ReceiptDTO toDto(Receipt receipt) {
+    public ReceiptDTO toDto(Recipe receipt) {
         ReceiptDTO dto = new ReceiptDTO();
         String authorName = receipt.getUser().getFirstName() + " " + receipt.getUser().getLastName();
 
@@ -58,15 +62,15 @@ public class ReceiptMapperImpl implements ReceiptMapper {
      */
 
     @Override
-    public Receipt toEntity(ReceiptDTO dto) {
-        Receipt receipt = new Receipt();
+    public Recipe toEntity(ReceiptDTO dto) {
+        Recipe receipt = new Recipe();
         receipt.setName(dto.getName());
         receipt.setDescription(dto.getDescription());
         receipt.setInstruction(dto.getInstruction());
         receipt.setIngredients(dto.getIngredients());
         receipt.setCookingTime(Long.valueOf(dto.getCookingTime()));
         receipt.setRating(Double.valueOf(dto.getCookingTime()));
-        receipt.setCountry(Countries.valueOf(dto.getCountry()));
+        receipt.setCountry(Country.valueOf(dto.getCountry()));
         receipt.setDishType(DishType.valueOf(dto.getDishType()));
         receipt.setCategories(converter.convertStringListToEnumList(dto.getCategories()));
         receipt.setImageLink(dto.getImageLink());
@@ -92,8 +96,8 @@ public class ReceiptMapperImpl implements ReceiptMapper {
 
     private final UserRepository repository;
     @Override
-    public Receipt createDtoToEntity(CreateReceiptDTO dto) {
-        Receipt receipt = new Receipt();
+    public Recipe createDtoToEntity(CreateReceiptDTO dto) {
+        Recipe receipt = new Recipe();
 
         receipt.setName(dto.getName());
         receipt.setCategories(converter.convertStringListToEnumList(dto.getCategories()));
@@ -102,7 +106,7 @@ public class ReceiptMapperImpl implements ReceiptMapper {
         receipt.setIngredients(dto.getIngredients());
         receipt.setCookingTime(Long.valueOf(dto.getCookingTime()));
         receipt.setRating(Double.valueOf(dto.getRating()));
-        receipt.setCountry(Countries.valueOf(dto.getCountry()));
+        receipt.setCountry(Country.valueOf(dto.getCountry()));
         receipt.setDishType(DishType.valueOf(dto.getDishType()));
         receipt.setImageLink(dto.getImageLink());
 
@@ -114,4 +118,35 @@ public class ReceiptMapperImpl implements ReceiptMapper {
 
         return receipt;
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    private String name;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(columnDefinition = "TEXT")
+    private String instruction;
+
+    private Integer cookingTime;
+
+    private Double rating;
+
+    private String country;
+
+    private String dishType;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private DishCategory dishCategory;
+    private String image;
+    private Timestamp createdAt;
+
 }

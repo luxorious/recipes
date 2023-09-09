@@ -3,6 +3,7 @@ package com.recipes.mapper;
 import com.recipes.dto.CreateReceiptDTO;
 import com.recipes.dto.ReceiptDTO;
 import com.recipes.entity.Receipt;
+import com.recipes.entity.Recipe;
 import com.recipes.exceptions.ValidationException;
 
 /**
@@ -11,12 +12,12 @@ import com.recipes.exceptions.ValidationException;
  */
 public interface ReceiptMapper {
     /**
-     * Converts a {@link Receipt} entity to a {@link ReceiptDTO} DTO.
+     * Converts a {@link Recipe} entity to a {@link ReceiptDTO} DTO.
      *
-     * @param receipt The {@link Receipt} entity to be converted.
+     * @param receipt The {@link Recipe} entity to be converted.
      * @return The corresponding {@link ReceiptDTO} DTO.
      */
-    ReceiptDTO toDto(Receipt receipt);
+    ReceiptDTO toDto(Recipe receipt);
 
     /**
      * Converts a {@link ReceiptDTO} DTO to a {@link Receipt} entity.
@@ -25,7 +26,7 @@ public interface ReceiptMapper {
      * @return The corresponding {@link Receipt} entity.
      * @throws ValidationException If there is a validation error during the conversion.
      */
-    Receipt toEntity(ReceiptDTO receiptDTO);
+    Recipe toEntity(ReceiptDTO receiptDTO);
 
-    Receipt createDtoToEntity(CreateReceiptDTO dto);
+    Recipe createDtoToEntity(CreateReceiptDTO dto);
 }
