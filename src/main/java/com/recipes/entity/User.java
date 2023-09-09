@@ -1,22 +1,18 @@
 package com.recipes.entity;
 
-import com.recipes.entity.enumerations.Skills;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 public class User {
-
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -26,28 +22,20 @@ public class User {
     @Column(name = "last_name", length = 64)
     private String lastName;
 
-    @Column(name = "login", length = 64)
-    private String login;
-
-    @Column(name = "password", length = 64)
-    private String password;
-
     @Column(name = "e_mail", length = 64)
     private String eMail;
 
-    @Column(name = "about_me")
+    @Column(name = "about_me", columnDefinition = "TEXT")
     private String aboutMe;
 
-    @Column(name = "skills")
-    private List<Skills> skills;
+    @Column(name = "skills", columnDefinition = "TEXT")
+    private String skills;
 
-    @Column(name = "links")
-    private List<String> links;
+    @Column(name = "links", columnDefinition = "TEXT")
+    private String links;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Receipt> receipts;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
+
 }
