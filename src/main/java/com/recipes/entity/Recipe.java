@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "recipes")
 @Data
@@ -26,8 +28,8 @@ public class Recipe {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "instructions", columnDefinition = "TEXT")
-    private String instructions;
+    @Column(name = "instruction", columnDefinition = "TEXT")
+    private String instruction;
 
     @Column(name = "cooking_time")
     private Integer cookingTime;
@@ -35,8 +37,6 @@ public class Recipe {
     @Column(name = "rating")
     private Double rating;
 
-    @Column(name = "country", length = 32)
-    private String country;
 
     @Column(name = "dish_type", length = 32)
     private String dishType;
@@ -52,11 +52,20 @@ public class Recipe {
     private Timestamp createdAt;
 
 
+    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH})
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private DishCategory category;
 
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH})
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @OneToOne(mappedBy = "quantities")
+    private Quantity quantity;
+
+    @OneToOne(cascade = ALL)
+    @JoinColumn(name = "countries_id")
+    private Country country;
 }
 
 

@@ -15,6 +15,9 @@ public class Country {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "country")
+    @Column(name = "country", length = 64)
     private String country;
+
+    @OneToOne(mappedBy = "recipes")
+    private Recipe recipe;
 }

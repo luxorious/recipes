@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "users")
@@ -38,4 +41,10 @@ public class User {
     @CreationTimestamp
     private Timestamp createdAt;
 
+
+    @OneToMany(mappedBy = "users", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Recipe> recipes;
+
+    @OneToOne(mappedBy = "authentications")
+    private Authentication authentication;
 }

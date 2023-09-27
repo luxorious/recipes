@@ -1,4 +1,4 @@
-package com.example.expertprojectbackend.annotation.validator;
+package com.recipes.annotation.validator;
 
 import com.example.expertprojectbackend.annotation.DishTypeValidator;
 import com.recipes.entity.enumerations.DishType;
@@ -20,7 +20,7 @@ public class DishTypeParsingValidator implements ConstraintValidator<DishTypeVal
         try {
             DishType.valueOf(s);
             return true;
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return false;
         }
     }

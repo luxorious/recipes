@@ -13,13 +13,6 @@ public class Authentication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @Column(name = "user_id")
-    private Long userId;
-
     @Column(name = "role")
     private String role;
 
@@ -28,6 +21,11 @@ public class Authentication {
 
     @Column(name = "password")
     private String password;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }
 

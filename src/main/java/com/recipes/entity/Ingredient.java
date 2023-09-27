@@ -19,7 +19,7 @@ public class Ingredient {
     @Column(name = "quantity_id")
     private Long quantityId;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "quantity_id")
     private Quantity quantity;
 

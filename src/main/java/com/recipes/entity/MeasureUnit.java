@@ -16,4 +16,7 @@ public class MeasureUnit {
     @Column(name = "unit", length = 32)
     private String unit;
 
+    @OneToOne(mappedBy = "quantities")
+    private Quantity quantity;
+
 }

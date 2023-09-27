@@ -1,4 +1,6 @@
-package com.example.expertprojectbackend.annotation;
+package com.recipes.annotation;
+
+import com.recipes.annotation.validator.LongParsingValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = com.recipes.annotation.validator.LongValidator.class)
+@Constraint(validatedBy = LongParsingValidator.class)
 public @interface LongValidator {
     String message() default "the value must be long number";
 

@@ -16,18 +16,15 @@ public class Quantity {
     @Column(name = "value", length = 32)
     private String value;
 
-    @Column(name = "receipt_id")
-    private Long receiptId;
-
-    @Column(name = "measure_units_id")
-    private long measureUnitsId;
-
-
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "receipt_id")
     private Recipe recipe;
 
-    @ManyToOne
+
+    @OneToOne(mappedBy = "ingredients")
+    private Ingredient ingredient;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "measure_units_id")
     private MeasureUnit measureUnit;
 

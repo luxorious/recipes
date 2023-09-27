@@ -1,6 +1,5 @@
 package com.recipes.dto;
 
-import com.recipes.annotation.*;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class CreateReceiptDTO {
     private String description;
     private String instruction;
     private String ingredients;
-    @LongValidator
     private String cookingTime;
     @DoubleValidator
     private String rating;

@@ -1,4 +1,4 @@
-package com.example.expertprojectbackend.annotation;
+package com.recipes.annotation;
 
 import com.recipes.annotation.validator.CountriesParsingValidator;
 

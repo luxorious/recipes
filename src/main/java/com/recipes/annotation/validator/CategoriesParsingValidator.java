@@ -1,4 +1,4 @@
-package com.example.expertprojectbackend.annotation.validator;
+package com.recipes.annotation.validator;
 
 import com.example.expertprojectbackend.annotation.CategoriesValidator;
 import com.recipes.entity.enumerations.Categories;
