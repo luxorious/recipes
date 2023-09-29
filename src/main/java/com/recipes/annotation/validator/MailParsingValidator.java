@@ -1,23 +1,23 @@
 package com.recipes.annotation.validator;
 
+import com.recipes.annotation.MailValidator;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MailParsingValidator implements ConstraintValidator<MailValidator, String> {
+
     /**
-     * Initializes the validator in preparation for
-     * {@link #isValid(Object, ConstraintValidatorContext)} calls.
-     * The constraint annotation for a given constraint declaration
-     * is passed.
-     * <p>
-     * This method is guaranteed to be called before any use of this instance for
-     * validation.
-     * <p>
-     * The default implementation is a no-op.
+     * This method is called before any constraint validation is performed,
+     * allowing the validator to initialize its internal state and configure
+     * itself based on the provided constraint annotation.
      *
-     * @param constraintAnnotation annotation instance for a given constraint declaration
+     * @param constraintAnnotation The constraint annotation instance for this validation.
+     *                             It provides access to the attributes defined in the annotation.
+     * @throws IllegalArgumentException If the constraint annotation is not of the expected type
+     *                                  or if the initialization fails for any reason.
      */
     @Override
     public void initialize(MailValidator constraintAnnotation) {

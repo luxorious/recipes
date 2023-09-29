@@ -1,6 +1,6 @@
 package com.recipes.annotation;
 
-import com.recipes.annotation.validator.CountriesParsingValidator;
+import com.recipes.annotation.validator.MailParsingValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,12 +11,11 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CountriesParsingValidator.class)
-public @interface CountriesValidator {
+@Constraint(validatedBy = MailParsingValidator.class)
+public @interface PhoneValidator {
+    String message() default "incorrect phone number";
 
-    String message() default "Country not valid";
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

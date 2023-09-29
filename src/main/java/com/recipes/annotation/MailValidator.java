@@ -1,6 +1,6 @@
 package com.recipes.annotation;
 
-import com.recipes.annotation.validator.CategoriesParsingValidator;
+import com.recipes.annotation.validator.MailParsingValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,11 +9,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.FIELD, ElementType.TYPE_USE, ElementType.PARAMETER})
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CategoriesParsingValidator.class)
-public @interface CategoriesValidator {
-    String message() default "wrong Categories type";
+@Constraint(validatedBy = MailParsingValidator.class)
+public @interface MailValidator {
+    String message() default "incorrect e-mail";
 
     Class<?>[] groups() default {};
 

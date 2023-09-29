@@ -1,6 +1,6 @@
 package com.recipes.annotation;
 
-import com.recipes.annotation.validator.DishTypeParsingValidator;
+import com.recipes.annotation.validator.IntegerParsingValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,11 +11,12 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = DishTypeParsingValidator.class)
-public @interface DishTypeValidator {
-    String message() default "Wrong Dish Type";
+@Constraint(validatedBy = IntegerParsingValidator.class)
+public @interface IntegerValidator {
 
-    Class<?>[] group() default {};
+    String message() default "the value must be integer number";
+
+    Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 }

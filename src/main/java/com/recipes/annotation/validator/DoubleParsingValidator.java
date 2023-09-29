@@ -1,6 +1,6 @@
 package com.recipes.annotation.validator;
 
-import com.example.expertprojectbackend.annotation.DoubleValidator;
+import com.recipes.annotation.DoubleValidator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

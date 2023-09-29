@@ -1,5 +1,7 @@
 package com.recipes.annotation.validator;
 
+import com.recipes.annotation.PhoneValidator;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
@@ -7,11 +9,6 @@ import java.util.regex.Pattern;
 
 public class PhoneParsingValidator implements ConstraintValidator<PhoneValidator, String> {
     /**
-     * Initializes the validator in preparation for
-     * {@link #isValid(Object, ConstraintValidatorContext)} calls.
-     * The constraint annotation for a given constraint declaration
-     * is passed.
-     * <p>
      * This method is guaranteed to be called before any use of this instance for
      * validation.
      * <p>
