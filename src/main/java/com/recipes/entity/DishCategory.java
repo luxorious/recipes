@@ -20,7 +20,7 @@ public class DishCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "dish_categories", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Recipe> recipes;
 
 }

@@ -19,9 +19,6 @@ public class Recipe {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
-
     @Column(name = "name", length = 128)
     private String name;
 
@@ -37,12 +34,9 @@ public class Recipe {
     @Column(name = "rating")
     private Double rating;
 
-
     @Column(name = "dish_type", length = 32)
     private String dishType;
 
-    @Column(name = "category_id")
-    private Long categoryId;
 
     @Column(name = "image_link")
     private String imageLink;
@@ -60,29 +54,10 @@ public class Recipe {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(mappedBy = "quantities")
+    @OneToOne(mappedBy = "recipe")
     private Quantity quantity;
 
     @OneToOne(cascade = ALL)
-    @JoinColumn(name = "countries_id")
+    @JoinColumn(name = "countries_id", referencedColumnName = "id")
     private Country country;
 }
-
-
-//   private Long id;
-//   private Long userId;
-//   private String name;
-//   private String description;
-//   private String instructions;
-//   private Integer cookingTime;
-//   private Double rating;
-//
-//   private Long countryId;
-//   private Country country;
-//
-//   private DishType dishType;
-//   private Long categoryId;
-//   private String imageLink;
-//   private Timestamp createdAt;
-//}
-

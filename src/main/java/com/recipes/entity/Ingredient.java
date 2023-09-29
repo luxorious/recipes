@@ -16,11 +16,8 @@ public class Ingredient {
     @Column(name = "name", length = 128)
     private String name;
 
-    @Column(name = "quantity_id")
-    private Long quantityId;
-
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "quantity_id")
+    @JoinColumn(name = "quantity_id", referencedColumnName = "id")
     private Quantity quantity;
 
 }

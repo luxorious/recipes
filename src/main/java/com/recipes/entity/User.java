@@ -42,9 +42,9 @@ public class User {
     private Timestamp createdAt;
 
 
-    @OneToMany(mappedBy = "users", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Recipe> recipes;
 
-    @OneToOne(mappedBy = "authentications")
+    @OneToOne(mappedBy = "user")
     private Authentication authentication;
 }

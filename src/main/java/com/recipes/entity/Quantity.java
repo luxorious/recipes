@@ -17,15 +17,15 @@ public class Quantity {
     private String value;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "receipt_id")
+    @JoinColumn(name = "receipt_id", referencedColumnName = "id")
     private Recipe recipe;
 
 
-    @OneToOne(mappedBy = "ingredients")
+    @OneToOne(mappedBy = "quantity")
     private Ingredient ingredient;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "measure_units_id")
+    @JoinColumn(name = "measure_units_id", referencedColumnName = "id")
     private MeasureUnit measureUnit;
 
 }
