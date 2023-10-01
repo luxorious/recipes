@@ -1,7 +1,7 @@
 package com.recipes.service.implementation;
 
-import com.recipes.dto.CreateReceiptDTO;
-import com.recipes.dto.ReceiptDTO;
+import com.recipes.dto.receipt.CreateReceiptDTO;
+import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.entity.Recipe;
 import com.recipes.mapper.ReceiptMapper;
 import com.recipes.repository.ReceiptRepository;
@@ -32,8 +32,8 @@ public class ReceiptServiceImpl implements ReceiptService {
     public ReceiptDTO save(CreateReceiptDTO receiptDTO) {
 //        перевірка на рейтинг і всі інші числа щоб були більші нуля
         Recipe receipt = receiptMapper.createDtoToEntity(receiptDTO);
-        receiptRepository.save(receipt);
+        Recipe receipt1 = receiptRepository.save(receipt);
         log.info("receipt saved");
-        return receiptMapper.toDto(receipt);
+        return receiptMapper.toDto(receipt1);
     }
 }

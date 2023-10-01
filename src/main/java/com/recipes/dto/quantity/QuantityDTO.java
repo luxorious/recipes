@@ -1,14 +1,13 @@
-package com.recipes.dto;
+package com.recipes.dto.quantity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReceiptListDto {
-    private List<ReceiptDTO> receiptDTOList;
+public class QuantityDTO {
+    private String value;
+    private String unit;
 }

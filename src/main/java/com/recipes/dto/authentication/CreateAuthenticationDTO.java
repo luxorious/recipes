@@ -1,0 +1,15 @@
+package com.recipes.dto.authentication;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateAuthenticationDTO {
+    private Long uerId;
+    private String role;
+    private String login;
+    private String password;
+}

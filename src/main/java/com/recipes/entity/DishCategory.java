@@ -1,6 +1,7 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import static jakarta.persistence.CascadeType.*;
 @Table(name = "dish_categories")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class DishCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

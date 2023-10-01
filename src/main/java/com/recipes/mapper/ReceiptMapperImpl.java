@@ -1,13 +1,11 @@
 package com.recipes.mapper;
 
-import com.recipes.dto.CreateReceiptDTO;
-import com.recipes.dto.ReceiptDTO;
+import com.recipes.dto.receipt.CreateReceiptDTO;
+import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.entity.DishCategory;
-import com.recipes.entity.Receipt;
 import com.recipes.entity.Recipe;
 import com.recipes.entity.User;
 import com.recipes.entity.enumerations.Categories;
-import com.recipes.entity.enumerations.DishType;
 import com.recipes.repository.UserRepository;
 import com.recipes.service.component.interfaces.Converter;
 import jakarta.persistence.*;
@@ -29,9 +27,9 @@ public class ReceiptMapperImpl implements ReceiptMapper {
     private final Converter<Categories> converter;
 
     /**
-     * Converts a {@link Receipt} entity to a {@link ReceiptDTO} DTO.
+     * Converts a {@link Recipe} entity to a {@link ReceiptDTO} DTO.
      *
-     * @param receipt The {@link Receipt} entity to be converted.
+     * @param receipt The {@link Recipe} entity to be converted.
      * @return The corresponding {@link ReceiptDTO} DTO.
      */
     @Override
@@ -42,12 +40,10 @@ public class ReceiptMapperImpl implements ReceiptMapper {
         dto.setName(receipt.getName());
         dto.setDescription(receipt.getDescription());
         dto.setInstruction(receipt.getInstruction());
-        dto.setIngredients(receipt.getIngredients());
         dto.setCookingTime(String.valueOf(receipt.getCookingTime()));
         dto.setRating(String.valueOf(receipt.getRating()));
         dto.setCountry(String.valueOf(receipt.getCountry()));
         dto.setDishType(String.valueOf(receipt.getDishType()));
-        dto.setCategories(converter.convertEnumToStringList(receipt.getCategories()));
         dto.setImageLink(receipt.getImageLink());
 
         dto.setAuthorName(authorName);
@@ -55,10 +51,10 @@ public class ReceiptMapperImpl implements ReceiptMapper {
     }
 
     /**
-     * Converts a {@link ReceiptDTO} DTO to a {@link Receipt} entity.
+     * Converts a {@link ReceiptDTO} DTO to a {@link Recipe} entity.
      *
      * @param dto The {@link ReceiptDTO} DTO to be converted.
-     * @return The corresponding {@link Receipt} entity.
+     * @return The corresponding {@link Recipe} entity.
      */
 
     @Override
@@ -67,12 +63,7 @@ public class ReceiptMapperImpl implements ReceiptMapper {
         receipt.setName(dto.getName());
         receipt.setDescription(dto.getDescription());
         receipt.setInstruction(dto.getInstruction());
-        receipt.setIngredients(dto.getIngredients());
-        receipt.setCookingTime(Long.valueOf(dto.getCookingTime()));
         receipt.setRating(Double.valueOf(dto.getCookingTime()));
-        receipt.setCountry(Country.valueOf(dto.getCountry()));
-        receipt.setDishType(DishType.valueOf(dto.getDishType()));
-        receipt.setCategories(converter.convertStringListToEnumList(dto.getCategories()));
         receipt.setImageLink(dto.getImageLink());
         return receipt;
     }
@@ -100,14 +91,14 @@ public class ReceiptMapperImpl implements ReceiptMapper {
         Recipe receipt = new Recipe();
 
         receipt.setName(dto.getName());
-        receipt.setCategories(converter.convertStringListToEnumList(dto.getCategories()));
+//        receipt.setCategories(converter.convertStringListToEnumList(dto.getCategories()));
         receipt.setDescription(dto.getDescription());
         receipt.setInstruction(dto.getInstruction());
-        receipt.setIngredients(dto.getIngredients());
-        receipt.setCookingTime(Long.valueOf(dto.getCookingTime()));
+//        receipt.setIngredients(dto.getIngredients());
+//        receipt.setCookingTime(Long.valueOf(dto.getCookingTime()));
         receipt.setRating(Double.valueOf(dto.getRating()));
-        receipt.setCountry(Country.valueOf(dto.getCountry()));
-        receipt.setDishType(DishType.valueOf(dto.getDishType()));
+//        receipt.setCountry(Country.valueOf(dto.getCountry()));
+//        receipt.setDishType(DishType.valueOf(dto.getDishType()));
         receipt.setImageLink(dto.getImageLink());
 
         User user = new User();

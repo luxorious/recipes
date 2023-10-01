@@ -1,7 +1,7 @@
 package com.recipes.controller;
 
-import com.recipes.dto.CreateReceiptDTO;
-import com.recipes.dto.ReceiptDTO;
+import com.recipes.dto.receipt.CreateReceiptDTO;
+import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.service.interfaces.ReceiptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
