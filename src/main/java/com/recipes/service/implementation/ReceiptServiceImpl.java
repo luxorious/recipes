@@ -3,7 +3,6 @@ package com.recipes.service.implementation;
 import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.entity.Recipe;
-import com.recipes.mapper.ReceiptMapper;
 import com.recipes.repository.ReceiptRepository;
 import com.recipes.service.interfaces.ReceiptService;
 import lombok.RequiredArgsConstructor;

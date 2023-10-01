@@ -1,6 +1,7 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "quantities")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Quantity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +21,6 @@ public class Quantity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "receipt_id", referencedColumnName = "id")
     private Recipe recipe;
-
 
     @OneToOne(mappedBy = "quantity")
     private Ingredient ingredient;

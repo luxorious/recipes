@@ -1,6 +1,7 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,6 +15,7 @@ import static jakarta.persistence.CascadeType.*;
 @Table(name = "users")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +42,6 @@ public class User {
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
-
 
     @OneToMany(mappedBy = "user", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Recipe> recipes;
