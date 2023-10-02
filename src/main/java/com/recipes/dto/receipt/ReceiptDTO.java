@@ -18,6 +18,6 @@ public class ReceiptDTO {
     private String categoryName;
     private String firstName;
     private String lastName;
-    private Long quantityId;
-    private Long country;
+    private String value;
+    private String country;
 }

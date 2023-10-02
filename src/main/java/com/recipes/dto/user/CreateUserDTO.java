@@ -2,11 +2,16 @@ package com.recipes.dto.user;
 
 import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.entity.Authentication;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.List;
-
-public class createUserDTO {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateUserDTO {
     private Long id;
     private String firstName;
     private String lastName;
