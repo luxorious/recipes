@@ -37,7 +37,6 @@ public class Recipe {
     @Column(name = "dish_type", length = 32)
     private String dishType;
 
-
     @Column(name = "image_link")
     private String imageLink;
 

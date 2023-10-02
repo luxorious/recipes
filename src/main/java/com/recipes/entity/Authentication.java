@@ -1,6 +1,7 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "authentications")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Authentication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
