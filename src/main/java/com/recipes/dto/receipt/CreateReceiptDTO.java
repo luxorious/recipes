@@ -2,6 +2,7 @@ package com.recipes.dto.receipt;
 
 import com.recipes.annotation.DoubleValidator;
 import com.recipes.annotation.IntegerValidator;
+import com.recipes.annotation.LongValidator;
 import com.recipes.annotation.NullValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,12 +27,12 @@ public class CreateReceiptDTO {
     private String dishType;
     @NullValidator
     private String imageLink;
-    @NullValidator
+    @LongValidator
     private Long categoryId;
-    @NullValidator
+    @LongValidator
     private Long userId;
-    @NullValidator
+    @LongValidator
     private Long quantityId;
-    @NullValidator
+    @LongValidator
     private Long countryId;
 }
