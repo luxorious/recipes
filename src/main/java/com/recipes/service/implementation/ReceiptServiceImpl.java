@@ -30,7 +30,6 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Transactional
     public ReceiptDTO save(CreateReceiptDTO receiptDTO) {
         repository.save(converter.toEntity(receiptDTO));
-//        перевірка на рейтинг і всі інші числа щоб були більші нуля
         log.info("receipt saved");
         return null;
     }

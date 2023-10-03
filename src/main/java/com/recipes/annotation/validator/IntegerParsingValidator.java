@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
-public class IntegerParsingValidator implements ConstraintValidator<IntegerValidator, String> {
+public class IntegerParsingValidator implements ConstraintValidator<IntegerValidator, Integer> {
 
     @Override
     public void initialize(IntegerValidator constraintAnnotation) {
@@ -14,14 +14,9 @@ public class IntegerParsingValidator implements ConstraintValidator<IntegerValid
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Integer s, ConstraintValidatorContext constraintValidatorContext) {
         if (s == null) {
             return false;
-        }
-        try {
-            return Integer.parseInt(s)<0;
-        } catch (NumberFormatException e){
-            return false;
-        }
+        } else return s > 0;
     }
 }

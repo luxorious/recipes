@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
-public class LongParsingValidator implements ConstraintValidator<LongValidator, String> {
+public class LongParsingValidator implements ConstraintValidator<LongValidator, Long> {
 
     @Override
     public void initialize(LongValidator constraintAnnotation) {
@@ -14,14 +14,9 @@ public class LongParsingValidator implements ConstraintValidator<LongValidator, 
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Long s, ConstraintValidatorContext constraintValidatorContext) {
         if (s == null) {
             return false;
-        }
-        try {
-            return Long.parseLong(s)<0;
-        } catch (NumberFormatException e){
-            return false;
-        }
+        } else return s > 0;
     }
 }
