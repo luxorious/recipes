@@ -2,6 +2,7 @@ package com.recipes.service.implementation;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;
+import com.recipes.mapper.RecipeDTOConverter;
 import com.recipes.repository.ReceiptRepository;
 import com.recipes.service.interfaces.ReceiptService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,9 @@ import java.util.List;
 @Slf4j
 public class ReceiptServiceImpl implements ReceiptService {
 
-    private final ReceiptRepository receiptRepository;
+    private final ReceiptRepository repository;
+    private final RecipeDTOConverter converter;
+
     @Override
     @Transactional
     public List<ReceiptDTO> findAll() {
@@ -26,6 +29,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     @Transactional
     public ReceiptDTO save(CreateReceiptDTO receiptDTO) {
+        repository.save(converter.toEntity(receiptDTO));
 //        перевірка на рейтинг і всі інші числа щоб були більші нуля
         log.info("receipt saved");
         return null;
