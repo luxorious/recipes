@@ -1,6 +1,10 @@
 package com.recipes.service.interfaces;
 
-public class UserService {
+import com.recipes.entity.User;
 
+import java.util.List;
 
+public interface UserService {
+
+    List<User> getAllUsers();
 }

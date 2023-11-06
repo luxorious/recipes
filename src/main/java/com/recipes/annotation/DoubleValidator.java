@@ -13,9 +13,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DoubleParsingValidator.class)
 public @interface DoubleValidator {
-
     String message() default "the value must be double number";
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }
