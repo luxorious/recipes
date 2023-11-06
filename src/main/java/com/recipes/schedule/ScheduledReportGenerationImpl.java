@@ -18,7 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 @Slf4j
 public class ScheduledReportGenerationImpl implements ScheduledReportGeneration {
-
+//ідея додатковому функціоналу
+//зробити розсилку репортів по тайм зонах відносно клієнтського часу (додати в сутність User тайм зону)
     private final UserService userService;
     private final MailSenderService mailSender;
 
