@@ -27,9 +27,14 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
     @Value(value = "${schedule.mailMessage}")
     private String mailMessage;
 
+    /**
+     * Scheduled method for generating reports
+     * Method use another Thread and save report in ConcurrentHashMap
+     * Scheduled is midnight every month
+     */
     @Override
     @Scheduled(cron = "0 0 0 1 * ?")//midnight every month
-    public void generation() {
+    public void generateReports() {
         report = new ConcurrentHashMap<>();
         Thread thread = new Thread(() -> {
             List<User> users = userService.getAllUsers();
@@ -42,9 +47,14 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
         thread.start();
     }
 
+    /**
+     * Scheduled method for sending reports (using another thread)
+     * Send report retrieves data (mail and message text) from Map and
+     * sends them at midday on the 1st day of each month.
+     */
     @Override
     @Scheduled(cron = "0 0 12 1 * ?")//midday every month
-    public void send() {
+    public void sendReports() {
         Thread sendReportThread = new Thread(() -> {
             if (report != null) {
                 for (Map.Entry<String, String> reportData : report.entrySet()) {
@@ -55,6 +65,12 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
         sendReportThread.start();
     }
 
+    /**
+     * Create a message text based on a list of recipes.
+     *
+     * @param recipes List of recipes from which the notification is generated
+     * @return Generated message from name and rating from recipe
+     */
     private synchronized String createMessage(List<Recipe> recipes) {
         String message = "";
         for (Recipe recipe : recipes) {
