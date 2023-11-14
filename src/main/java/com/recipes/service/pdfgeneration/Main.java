@@ -2,13 +2,14 @@ package com.recipes.service.pdfgeneration;
 
 import com.recipes.entity.Recipe;
 import com.recipes.entity.User;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.IOException;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        RecipePdfGenerator generator = new RecipePdfGenerator();
+        RecipePdfGeneratorImpl generator = new RecipePdfGeneratorImpl();
         Recipe recipe = new Recipe();
         User user = new User();
         user.setLastName("Ivanenko");
@@ -44,9 +45,13 @@ public class Main {
         recipe.setDishType("Перша страва");
         recipe.setUser(user);
         recipe.setImageLink("src/main/resources/pdf-resources/12.jpg");
-
         List<Recipe> recipes = List.of(recipe, recipe, recipe);
 //        generator.generateRecipe(recipe);
-        generator.generateRecipesBook(recipes);
+//        generator.generateRecipesBook(recipes);
+        PDDocument document = new PDDocument();
+
+        document=generator.generateRecipesBook(recipes);
+
+        document.save("recipes.pdf");
     }
 }
