@@ -5,7 +5,7 @@ import com.recipes.dto.receipt.ReceiptDTO;
 
 import java.util.List;
 
-public interface ReceiptService {
+public interface RecipeService {
 
     List<ReceiptDTO> findAll();
 

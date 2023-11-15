@@ -4,7 +4,7 @@ import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;
 import com.recipes.mapper.RecipeDTOConverter;
 import com.recipes.repository.ReceiptRepository;
-import com.recipes.service.interfaces.ReceiptService;
+import com.recipes.service.interfaces.RecipeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class ReceiptServiceImpl implements ReceiptService {
+public class RecipeServiceImpl implements RecipeService {
 
     private final ReceiptRepository repository;
     private final RecipeDTOConverter converter;

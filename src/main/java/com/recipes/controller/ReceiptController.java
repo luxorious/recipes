@@ -2,7 +2,7 @@ package com.recipes.controller;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;
-import com.recipes.service.interfaces.ReceiptService;
+import com.recipes.service.interfaces.RecipeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 public class ReceiptController {
 
-    private final ReceiptService receiptService;
+    private final RecipeService receiptService;
 
     @GetMapping("/get-all")
     public List<ReceiptDTO> findAll(){
