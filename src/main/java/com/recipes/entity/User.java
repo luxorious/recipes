@@ -46,6 +46,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Recipe> recipes;
 
-    @OneToOne(mappedBy = "user")
-    private Authentication authentication;
+//    @OneToOne(mappedBy = "user")
+//    private Authentication authentication;
 }

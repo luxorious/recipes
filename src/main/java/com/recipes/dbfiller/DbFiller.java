@@ -1,25 +1,7 @@
 package com.recipes.dbfiller;
 
-import com.recipes.entity.Authentication;
-import com.recipes.entity.Country;
-import com.recipes.entity.DishCategory;
-import com.recipes.entity.Ingredient;
-import com.recipes.entity.MeasureUnit;
-import com.recipes.entity.Quantity;
-import com.recipes.entity.Recipe;
-import com.recipes.entity.User;
-import com.recipes.service.interfaces.AuthenticationService;
-import com.recipes.service.interfaces.CountryService;
-import com.recipes.service.interfaces.DishCategoryService;
-import com.recipes.service.interfaces.IngredientService;
-import com.recipes.service.interfaces.MeasureUnitService;
-import com.recipes.service.interfaces.QuantityService;
-import com.recipes.service.interfaces.UserService;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.recipes.entity.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,20 +10,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-@Data
-@Component
-@RequiredArgsConstructor
-@Slf4j
+//@Data
+//@Component
+//@RequiredArgsConstructor
+//@Slf4j
 public class DbFiller {
 
-    private final UserService userService;
-    private final AuthenticationService authenticationService;
-    private final RecipeService recipeService;
-    private final QuantityService quantityService;
-    private final DishCategoryService dishCategoryService;
-    private final IngredientService ingredientService;
-    private final MeasureUnitService measureUnitService;
-    private final CountryService countryService;
+//    private final UserService userService;
+//    private final AuthenticationService authenticationService;
+//    private final RecipeService recipeService;
+//    private final QuantityService quantityService;
+//    private final DishCategoryService dishCategoryService;
+//    private final IngredientService ingredientService;
+//    private final MeasureUnitService measureUnitService;
+//    private final CountryService countryService;
 
     private int limit = 10;
     private int limit2 = 10;
@@ -165,8 +147,21 @@ public class DbFiller {
         generatedAuthentication.setRole(randomChoice(rolePath));
         generatedAuthentication.setLogin(randomChoice(loginPath));
         generatedAuthentication.setPassword(randomChoice(passwordPath));
-
-        generatedAuthentication.setUser(user);
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+/////////////////////////////
+//        generatedAuthentication.setUser(user);
         return generatedAuthentication;
     }
 

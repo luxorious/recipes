@@ -1,4 +1,4 @@
-package com.recipes.mapper;
+package com.recipes.converter;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;

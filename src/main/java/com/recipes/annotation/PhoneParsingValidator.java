@@ -1,9 +1,9 @@
-package com.recipes.annotation.validator;
+package com.recipes.annotation;
 
-import com.recipes.annotation.PhoneValidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

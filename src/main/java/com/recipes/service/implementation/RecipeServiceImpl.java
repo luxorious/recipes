@@ -2,7 +2,7 @@ package com.recipes.service.implementation;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
 import com.recipes.dto.receipt.ReceiptDTO;
-import com.recipes.mapper.RecipeDTOConverter;
+import com.recipes.converter.RecipeDTOConverter;
 import com.recipes.repository.ReceiptRepository;
 import com.recipes.service.interfaces.RecipeService;
 import lombok.RequiredArgsConstructor;

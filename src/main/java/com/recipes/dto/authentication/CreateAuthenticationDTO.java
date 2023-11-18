@@ -1,20 +1,25 @@
 package com.recipes.dto.authentication;
 
-import com.recipes.annotation.NullValidator;
-import com.recipes.annotation.PasswordValidator;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateAuthenticationDTO {
-    private Long uerId;
-    @NullValidator
+    @NotNull
+    @NotBlank(message = "role is mandatory")
+//    @MyCustomValidation(value = {"error", "mistake"})
     private String role;
-    @NullValidator
+//    @NotNull
+//    @NotBlank(message = "login is mandatory")
     private String login;
-    @PasswordValidator
+//    @NotNull
+//    @NotBlank(message = "password is mandatory")
     private String password;
+
 }

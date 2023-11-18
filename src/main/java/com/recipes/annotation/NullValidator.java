@@ -1,7 +1,5 @@
 package com.recipes.annotation;
 
-import com.recipes.annotation.validator.NullParsingValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.ElementType;
