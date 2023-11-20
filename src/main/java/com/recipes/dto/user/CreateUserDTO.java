@@ -1,25 +1,32 @@
 package com.recipes.dto.user;
 
-import com.recipes.dto.receipt.ReceiptDTO;
-import com.recipes.entity.Authentication;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.URL;
 
-import java.sql.Timestamp;
-import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserDTO {
-    private Long id;
+    @NotBlank
+    @NotNull
     private String firstName;
+    @NotBlank
+    @NotNull
     private String lastName;
+    @Email
     private String eMail;
+    @NotBlank
+    @NotNull
     private String aboutMe;
+    @NotBlank
+    @NotNull
     private String skills;
+    @NotBlank
+    @URL
     private String links;
-    private Timestamp createdAt;
-    private List<ReceiptDTO> recipes;
-    private Authentication authentication;
 }

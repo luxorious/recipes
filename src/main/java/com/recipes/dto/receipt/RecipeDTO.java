@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReceiptDTO {
+public class RecipeDTO {
     private String name;
     private String description;
     private String instruction;
@@ -18,6 +18,5 @@ public class ReceiptDTO {
     private String categoryName;
     private String firstName;
     private String lastName;
-    private String value;
     private String country;
 }

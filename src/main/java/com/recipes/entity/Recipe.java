@@ -45,14 +45,14 @@ public class Recipe {
     private Timestamp createdAt;
 
 
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH})
+    @ManyToOne(cascade = {MERGE, REFRESH})
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private DishCategory category;
 
-    @ManyToOne(cascade = {MERGE, PERSIST, REFRESH})
+    @ManyToOne(cascade = {MERGE, REFRESH})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
+    //чому кількості повинні посилатись на рецепт, а не навпаки?
     @OneToOne(mappedBy = "recipe")
     private Quantity quantity;
 

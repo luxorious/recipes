@@ -1,7 +1,7 @@
 package com.recipes.service.implementation;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
-import com.recipes.dto.receipt.ReceiptDTO;
+import com.recipes.dto.receipt.RecipeDTO;
 import com.recipes.converter.RecipeDTOConverter;
 import com.recipes.repository.ReceiptRepository;
 import com.recipes.service.interfaces.RecipeService;
@@ -22,13 +22,13 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     @Transactional
-    public List<ReceiptDTO> findAll() {
+    public List<RecipeDTO> findAll() {
         return null;
     }
 
     @Override
     @Transactional
-    public ReceiptDTO save(CreateReceiptDTO receiptDTO) {
+    public RecipeDTO save(CreateReceiptDTO receiptDTO) {
         repository.save(converter.toEntity(receiptDTO));
         log.info("receipt saved");
         return null;

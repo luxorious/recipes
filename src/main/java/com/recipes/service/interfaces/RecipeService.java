@@ -1,13 +1,13 @@
 package com.recipes.service.interfaces;
 
 import com.recipes.dto.receipt.CreateReceiptDTO;
-import com.recipes.dto.receipt.ReceiptDTO;
+import com.recipes.dto.receipt.RecipeDTO;
 
 import java.util.List;
 
 public interface RecipeService {
 
-    List<ReceiptDTO> findAll();
+    List<RecipeDTO> findAll();
 
-    public ReceiptDTO save(CreateReceiptDTO receiptDTO);
+    public RecipeDTO save(CreateReceiptDTO receiptDTO);
 }

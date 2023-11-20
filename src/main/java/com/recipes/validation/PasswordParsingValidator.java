@@ -1,15 +1,16 @@
-package com.recipes.annotation;
+package com.recipes.validation;
 
 
+import com.recipes.validation.anotations.PasswordValidator;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PasswordParsingValidator implements ConstraintValidator<DoubleValidator, String> {
+public class PasswordParsingValidator implements ConstraintValidator<PasswordValidator, String> {
     @Override
-    public void initialize(DoubleValidator constraintAnnotation) {
+    public void initialize(PasswordValidator constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
@@ -18,7 +19,7 @@ public class PasswordParsingValidator implements ConstraintValidator<DoubleValid
         if (value == null) {
             return false;
         }
-//        regex - minimum 8 characters, at least one letter and one number
+//        regex - minimum eight characters, at least one letter and one number
         String phoneRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
         Pattern pattern = Pattern.compile(phoneRegex);
         Matcher matcher = pattern.matcher(value);

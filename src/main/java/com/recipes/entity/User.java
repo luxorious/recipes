@@ -19,6 +19,7 @@ import static jakarta.persistence.CascadeType.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "first_name", length = 64)
@@ -46,6 +47,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Recipe> recipes;
 
-//    @OneToOne(mappedBy = "user")
-//    private Authentication authentication;
+    @OneToOne(mappedBy = "user")
+    private Authentication authentication;
 }

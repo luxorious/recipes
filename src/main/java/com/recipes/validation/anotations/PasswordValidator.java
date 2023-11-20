@@ -1,7 +1,9 @@
-package com.recipes.annotation;
+package com.recipes.validation.anotations;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import com.recipes.validation.PasswordParsingValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

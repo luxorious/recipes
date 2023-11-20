@@ -167,7 +167,7 @@ public class DbFiller {
 
     private Country fillCountry(){
         Country generatedCountry = new Country();
-        generatedCountry.setCountry(randomChoice(countryPath));
+        generatedCountry.setName(randomChoice(countryPath));
         return generatedCountry;
     }
     private Recipe fillRecipe(User user, Country country, DishCategory category){

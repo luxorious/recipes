@@ -18,7 +18,8 @@ public class Quantity {
     @Column(name = "value", length = 32)
     private String value;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    //чому кількості повинні посилатись на рецепт, а не навпаки?
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "receipt_id", referencedColumnName = "id")
     private Recipe recipe;
 

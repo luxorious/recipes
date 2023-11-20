@@ -17,8 +17,8 @@ public class Country {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "country", length = 64)
-    private String country;
+    @Column(name = "name", length = 64)
+    private String name;
 
     @OneToOne(mappedBy = "country", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true)
     private Recipe recipe;

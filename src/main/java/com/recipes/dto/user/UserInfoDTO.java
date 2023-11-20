@@ -1,6 +1,6 @@
 package com.recipes.dto.user;
 
-import com.recipes.dto.receipt.ReceiptDTO;
+import com.recipes.dto.receipt.RecipeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfoDTO {
+    private Long id;
     private String firstName;
     private String lastName;
     private String eMail;
@@ -19,5 +20,5 @@ public class UserInfoDTO {
     private String skills;
     private String links;
     private Timestamp createdAt;
-    private List<ReceiptDTO> recipes;
+    private List<RecipeDTO> recipes;
 }
