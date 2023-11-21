@@ -107,7 +107,7 @@ public class DbFiller {
         generatedUser.setEMail(randomChoice(eMailsPath));
         generatedUser.setAboutMe(randomChoice(aboutMePath));
         generatedUser.setSkills(randomChoice(skillsPath));
-        generatedUser.setLinks(randomChoice(linkPath));
+        generatedUser.setLink(randomChoice(linkPath));
 
         return generatedUser;
     }
@@ -173,13 +173,13 @@ public class DbFiller {
     private Recipe fillRecipe(User user, Country country, DishCategory category){
         Recipe generatedRecipe = new Recipe();
 
-        generatedRecipe.setImageLink(randomChoice(linkPath));
+        generatedRecipe.setImagePath(randomChoice(linkPath));
         generatedRecipe.setName(randomChoice(recipeNamePath));
         generatedRecipe.setDescription(randomChoice(descriptionPath));
         generatedRecipe.setInstruction(randomChoice(instructionPath));
         generatedRecipe.setCookingTime(random.nextInt(30,250));
         generatedRecipe.setRating(random.nextDouble(1, 6));
-        generatedRecipe.setImageLink(imageLinkPath);
+        generatedRecipe.setImagePath(imageLinkPath);
         generatedRecipe.setUser(user);
         generatedRecipe.setDishType(randomChoice(dishTypePath));
         generatedRecipe.setCategory(category);

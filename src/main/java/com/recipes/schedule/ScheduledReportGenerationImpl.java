@@ -38,7 +38,7 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
     public void generateReports() {
         report = new ConcurrentHashMap<>();
         Thread thread = new Thread(() -> {
-            List<User> users = userService.getAllUsers();
+            List<User> users = userService.findAllUserEntity();
             for (User user : users) {
                 String mail = user.getEMail();
                 String textMessage = createMessage(user.getRecipes());

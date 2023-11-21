@@ -1,4 +1,4 @@
-package com.recipes.controller.exceptionHandler;
+package com.recipes.controller.exceptionhandler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +20,14 @@ import java.util.Map;
 public class Handler {
     @Value(value = "${exceptions.handleSQLIntegrityConstraintViolationException}")
     private String messageHandleSQLIntegrityConstraintViolationException;
-    //SQLIntegrityConstraintViolationException - duplicate data in db
+    //NoSuchElementException
+    //IllegalAccessException | InvocationTargetException
+    //IllegalArgumentException
+    //NullPointerExeption: Якщо repository є нульовим (null), буде спричинена помилка NullPointerException.
+    //IllegalArgumentException: Якщо передані параметри name або instruction є null, це може спричинити виникнення помилки IllegalArgumentException.
+    //DataAccessException: Якщо є проблеми з підключенням до бази даних або запит не вдалося виконати через проблеми з базою даних, це може призвести до помилки DataAccessException або його підкласів.
+    //TransactionException: Якщо цей метод знаходиться в межах транзакції і виникає проблема під час збереження даних в базі даних, це може призвести до помилки TransactionException.
+    //InvalidDataAccessApiUsageException: Якщо метод оновлення в репозиторії не був налаштований або викликався з недійсними параметрами, це може призвести до помилки InvalidDataAccessApiUsageException.
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleBadAccountData() {
         log.error("bad value");

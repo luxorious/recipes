@@ -8,12 +8,14 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
     @Value(value = "${recipePdfGenerator.fontPath}")
     private String fontPath = "src/main/resources/times.ttf";
@@ -133,6 +135,7 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
         pageNumber = 1;
         contentStream.close();
         document.save("doc.pdf");
+        document.close();
         return document;
     }
 
@@ -148,7 +151,7 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
     public PDDocument generateRecipe(Recipe recipe) throws IOException {
         addAdditionalPage();
         PDImageXObject logo = PDImageXObject.createFromFile(logoPath, document);
-        PDImageXObject recipeImage = PDImageXObject.createFromFile(recipe.getImageLink(), document);
+        PDImageXObject recipeImage = PDImageXObject.createFromFile(recipe.getImagePath(), document);
         //page number
         addStringText(String.valueOf(pageNumber), pageNumberFontSize, 570, 10);
         //add footer

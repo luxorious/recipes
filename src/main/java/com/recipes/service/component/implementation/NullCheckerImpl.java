@@ -1,7 +1,7 @@
 package com.recipes.service.component.implementation;
 
 import com.recipes.exceptions.ValidationException;
-import com.recipes.service.component.interfaces.NullValidate;
+import com.recipes.service.component.interfaces.NullChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class NullValidateImpl<T> implements NullValidate<T> {
+public class NullCheckerImpl<T> implements NullChecker<T> {
 
     @Value("${nullValidate.list}")
     private String messageForList;
@@ -44,11 +44,7 @@ public class NullValidateImpl<T> implements NullValidate<T> {
      */
     @Override
     public T entity(Optional<T> t) {
-        if (t.isPresent()){
-            return t.get();
-        } else {
-            throw new ValidationException(messageForEntity);
-        }
+        return t.orElseThrow(() -> new ValidationException(messageForEntity));
     }
 
     /**

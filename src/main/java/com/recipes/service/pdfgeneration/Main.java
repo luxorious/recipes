@@ -44,7 +44,7 @@ public class Main {
         recipe.setCookingTime(120);
         recipe.setDishType("Перша страва");
         recipe.setUser(user);
-        recipe.setImageLink("src/main/resources/pdf-resources/12.jpg");
+        recipe.setImagePath("src/main/resources/pdf-resources/12.jpg");
         List<Recipe> recipes = List.of(recipe, recipe, recipe);
 //        generator.generateRecipe(recipe);
 //        generator.generateRecipesBook(recipes);

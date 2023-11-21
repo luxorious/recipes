@@ -5,7 +5,7 @@ import com.recipes.exceptions.ValidationException;
 import java.util.List;
 import java.util.Optional;
 
-public interface NullValidate<T> {
+public interface NullChecker<T> {
 
     /**
      * Checks if the input list is not null.
