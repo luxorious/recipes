@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class IngredientDTO {
     private String name;
+    private Long quantityId;
 }
