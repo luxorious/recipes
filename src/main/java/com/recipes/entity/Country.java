@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.CascadeType.*;
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.MERGE;
+import static jakarta.persistence.CascadeType.REFRESH;
 
 @Entity
 @Table(name = "countries")
@@ -20,6 +23,6 @@ public class Country {
     @Column(name = "name", length = 64)
     private String name;
 
-    @OneToOne(mappedBy = "country", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true)
-    private Recipe recipe;
+    @OneToMany(mappedBy = "country", cascade = {MERGE, REFRESH})
+    private List<Recipe> recipes;
 }

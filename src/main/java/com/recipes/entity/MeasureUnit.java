@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "measure_units")
 @Data
@@ -18,7 +20,7 @@ public class MeasureUnit {
     @Column(name = "unit", length = 32)
     private String unit;
 
-    @OneToOne(mappedBy = "measureUnit")
-    private Quantity quantity;
+    @OneToMany(mappedBy = "measureUnit")
+    private List<Quantity> quantities;
 
 }

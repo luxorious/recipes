@@ -37,8 +37,8 @@ public class Recipe {
     @Column(name = "dish_type", length = 32)
     private String dishType;
 
-    @Column(name = "image_link")
-    private String imageLink;
+    @Column(name = "image_path")
+    private String imagePath;
 
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
@@ -52,11 +52,11 @@ public class Recipe {
     @ManyToOne(cascade = {MERGE, REFRESH})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    //чому кількості повинні посилатись на рецепт, а не навпаки?
+
     @OneToOne(mappedBy = "recipe")
     private Quantity quantity;
 
-    @OneToOne(cascade = ALL)
+    @ManyToOne(cascade = {MERGE, REFRESH})
     @JoinColumn(name = "countries_id", referencedColumnName = "id")
     private Country country;
 }

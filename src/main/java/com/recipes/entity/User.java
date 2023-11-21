@@ -37,14 +37,14 @@ public class User {
     @Column(name = "skills", columnDefinition = "TEXT")
     private String skills;
 
-    @Column(name = "links", columnDefinition = "TEXT")
-    private String links;
+    @Column(name = "link", columnDefinition = "TEXT")
+    private String link;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @OneToMany(mappedBy = "user", cascade = {MERGE, PERSIST, REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = {MERGE, REFRESH})
     private List<Recipe> recipes;
 
     @OneToOne(mappedBy = "user")
