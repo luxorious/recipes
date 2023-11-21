@@ -15,11 +15,17 @@ public class IngredientDtoConverter {
     private final ModelMapper mapper;
 
     public IngredientDTO toDto(Ingredient entity) {
-        return mapper.map(entity, IngredientDTO.class);
+        return mapper.typeMap(Ingredient.class, IngredientDTO.class)
+                .addMapping(obj->obj.getQuantity().getId(),
+                        (destObjDto, id)->destObjDto.setQuantityId((Long) id))
+                .map(entity);
     }
 
     public Ingredient toEntity(IngredientDTO dto) {
-        return mapper.map(dto, Ingredient.class);
+        return mapper.typeMap(IngredientDTO.class, Ingredient.class).
+                addMapping(IngredientDTO::getQuantityId,
+                        (destObj, id)->destObj.getQuantity().setId((Long) id))
+                .map(dto);
     }
 
     public List<IngredientDTO> toListDTO(List<Ingredient> ingredients) {
