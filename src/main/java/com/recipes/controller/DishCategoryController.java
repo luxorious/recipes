@@ -1,7 +1,7 @@
 package com.recipes.controller;
 
 import com.recipes.dto.category.DishCategoryDTO;
-import com.recipes.service.interfaces.DishCategoryService;
+import com.recipes.service.crud.interfaces.DishCategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
