@@ -1,7 +1,7 @@
 package com.recipes.controller;
 
 import com.recipes.dto.quantity.QuantityDTO;
-import com.recipes.service.interfaces.QuantityService;
+import com.recipes.service.crud.interfaces.QuantityService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
