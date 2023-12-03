@@ -17,6 +17,16 @@ import java.util.List;
 
 @Component
 public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
+
+    @Value("${savingFiles.pathSavingPDfBook}")
+    private String pathSavingPDfBook ="src/main/resources/save-recipes/book-";
+
+    @Value("${savingFiles.pathSavingPDfPage}")
+    private String pathSavingPDfPage ="src/main/resources/save-recipes/page-";
+
+    @Value("${savingFiles.bookFormat}")
+    private String bookFormat=".pdf";
+
     @Value(value = "${recipePdfGenerator.fontPath}")
     private String fontPath = "src/main/resources/times.ttf";
 
@@ -101,18 +111,29 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
     @Value(value = "${recipePdfGenerator.startPositionY}")
     private float startPositionY = 40;
 
-    private final PDDocument document = new PDDocument();
-    private final PDType0Font font = PDType0Font.load(document, new File(fontPath));
-    private final PDPage page = new PDPage(PDRectangle.A4);
-    private PDPageContentStream contentStream = new PDPageContentStream(document, page);
-    private float pageHeight = page.getMediaBox().getHeight() - tabulation;
-    private final float pageHeightPoints = page.getMediaBox().getHeight();
-    private final float pageWidth = page.getMediaBox().getWidth();
-    private int pageNumber = 1;
+    private PDDocument document;// = new PDDocument();
+    private PDType0Font font;// = PDType0Font.load(document, new File(fontPath));
+    private PDPage page;// = new PDPage(PDRectangle.A4);
+    private PDPageContentStream contentStream;//;// = new PDPageContentStream(document, page);
+    private float pageHeight ;//= page.getMediaBox().getHeight() - tabulation;
+    private float pageHeightPoints;//;// = page.getMediaBox().getHeight();
+    private float pageWidth ;//= page.getMediaBox().getWidth();
+    private int pageNumber ;//= 1;
+
 
     public RecipePdfGeneratorImpl() throws IOException {
-        //empty constructor due to the fact that the variable "font" - can throw an error,
-        // and it was necessary to initialize the no args constructor
+        init();
+    }
+
+    private void init()throws IOException{
+        this.document = new PDDocument();
+        this.font = PDType0Font.load(document, new File(fontPath));
+        this.page = new PDPage(PDRectangle.A4);
+        this.contentStream = new PDPageContentStream(document, page);
+        this.pageHeight = page.getMediaBox().getHeight() - tabulation;
+        this.pageHeightPoints = page.getMediaBox().getHeight();
+        this.pageWidth = page.getMediaBox().getWidth();
+        this.pageNumber = 1;
     }
 
     /**
@@ -123,20 +144,24 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
      * @throws IOException If an I/O exception occurs while generating the document.
      */
     @Override
-    public PDDocument generateRecipesBook(List<Recipe> recipes) throws IOException {
+    public String generateRecipesBook(List<Recipe> recipes) throws IOException {
         addBookCover();
         List<String> contents = new ArrayList<>();
         for (Recipe recipe : recipes) {
-            generateRecipe(recipe);
+            generatePage(recipe);
             contents.add(recipe.getName());
             pageNumber++;
         }
         generateContents(contents);
         pageNumber = 1;
         contentStream.close();
-        document.save("doc.pdf");
+        String path = pathSavingPDfBook + System.currentTimeMillis()+bookFormat;
+        document.save(path);
         document.close();
-        return document;
+        init();
+
+        //зробити метод, який повинен автоматично видаляти документ + документ назвати пейдж-час.пдф
+        return path;
     }
 
     /**
@@ -148,10 +173,22 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
      * @throws IOException If an I/O error occurs during PDF creation.
      */
     @Override
-    public PDDocument generateRecipe(Recipe recipe) throws IOException {
+    public String generateRecipe(Recipe recipe) throws IOException {
+        PDDocument doc = generatePage(recipe);
+        contentStream.close();
+        String path = pathSavingPDfPage + System.currentTimeMillis()+bookFormat;
+        doc.save(path);
+        doc.close();
+        init();
+        return path;
+    }
+
+    //after coll method - must use method doc.close()
+
+    private PDDocument generatePage(Recipe recipe) throws IOException {
         addAdditionalPage();
         PDImageXObject logo = PDImageXObject.createFromFile(logoPath, document);
-        PDImageXObject recipeImage = PDImageXObject.createFromFile(recipe.getImagePath(), document);
+        PDImageXObject recipeImage = PDImageXObject.createFromFile(recipe.getImageName(), document);
         //page number
         addStringText(String.valueOf(pageNumber), pageNumberFontSize, 570, 10);
         //add footer

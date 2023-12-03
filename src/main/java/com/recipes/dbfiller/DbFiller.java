@@ -1,7 +1,13 @@
 package com.recipes.dbfiller;
 
 import com.recipes.entity.*;
+import com.recipes.repository.*;
+import jakarta.annotation.PostConstruct;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,92 +16,97 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-//@Data
-//@Component
-//@RequiredArgsConstructor
-//@Slf4j
+@Data
+@Component
+@RequiredArgsConstructor
+@Slf4j
 public class DbFiller {
 
-//    private final UserService userService;
-//    private final AuthenticationService authenticationService;
-//    private final RecipeService recipeService;
-//    private final QuantityService quantityService;
-//    private final DishCategoryService dishCategoryService;
-//    private final IngredientService ingredientService;
-//    private final MeasureUnitService measureUnitService;
-//    private final CountryService countryService;
+    private final UserRepository userService;
+    private final AuthenticationRepository authenticationService;
+    private final RecipeRepository recipeService;
+    private final QuantityRepository quantityService;
+    private final DishCategoryRepository dishCategoryService;
+    private final IngredientRepository ingredientService;
+    private final MeasureUnitRepository measureUnitService;
+    private final CountryRepository countryService;
 
-    private int limit = 10;
-    private int limit2 = 10;
+    private int limit = 2;
+    private int limit2 = 2;
 
     //User
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/firstNamesPath.txt}")
+    @Value(value = "${dbFiller.firstNamesPath}")
     private String firstNamesPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/eMailsPath.txt}")
+    @Value(value = "${dbFiller.lastNamePath}")
     private String lastNamePath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/firstNamesPath.txt}")
+    @Value(value = "${dbFiller.eMailsPath}")
     private String eMailsPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/aboutMePath.txt}")
+    @Value(value = "${dbFiller.aboutMePath}")
     private String aboutMePath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/skillsPath.txt}")
+    @Value(value = "${dbFiller.skillsPath}")
     private String skillsPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/linkPath.txt}")
+    @Value(value = "${dbFiller.linkPath}")
     private String linkPath;
 
     //Authentication
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/rolePath.txt}")
+    @Value(value = "${dbFiller.rolePath}")
     private String rolePath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/loginPath.txt}")
+    @Value(value = "${dbFiller.loginPath}")
     private String loginPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/passwordPath.txt}")
+    @Value(value = "${dbFiller.passwordPath}")
     private String passwordPath;
 
     //Recipe
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/recipeNamePath.txt}")
+    @Value(value = "${dbFiller.recipeNamePath}")
     private String recipeNamePath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/descriptionPath.txt}")
+    @Value(value = "${dbFiller.descriptionPath}")
     private String descriptionPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/instructionPath.txt}")
+    @Value(value = "${dbFiller.instructionPath}")
     private String instructionPath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/dishTypePath.txt}")
+    @Value(value = "${dbFiller.dishTypePath}")
     private String dishTypePath;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/imageLinkPath.txt}")
+    @Value(value = "${dbFiller.imageLinkPath}")
     private String imageLinkPath;
 
     //Quantity
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/valuePath.txt}")
+    @Value(value = "${dbFiller.valuePath}")
     private String valuePath;
 
     //DishCategory
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/categoryNamePath.txt\n}")
+    @Value(value = "${dbFiller.categoryNamePath}")
     private String categoryNamePath;
 
     //MeasureUnit
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/unitPath.txt}")
+    @Value(value = "${dbFiller.unitPath}")
     private String unitPath;
 
     //Ingredient
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/ingredientNamePath.txt}")
+    @Value(value = "${dbFiller.ingredientNamePath}")
     private String ingredientNamePath;
 
-    //country;
-    @Value(value = "${dbFiller.firstNamesPath=src/main/resources/databasefiller/countryPath.txt}")
+    //country
+    @Value(value = "${dbFiller.countryPath}")
     private String countryPath;
 
 
     private Random random = new Random();
 
+    @PostConstruct
+    public void init(){
+        fill();
+    }
+
     public void fill(){
         for (int i = 0; i < limit; i++) {
-            User user = fillUser();
-            Authentication authentication = fillAuthentication(user);
-            DishCategory dishCategory = fillDishCategory();
-            MeasureUnit measureUnit = fillMeasureUnit();
+            User user = userService.save( fillUser());
+            Authentication authentication = authenticationService.save(fillAuthentication(user));
+            DishCategory dishCategory = dishCategoryService.save(fillDishCategory());
+            MeasureUnit measureUnit = measureUnitService.save(fillMeasureUnit());
             for (int j = 0; j < limit2; j++) {
-                Country country = fillCountry();
-                Recipe recipe = fillRecipe(user, country, dishCategory);
-                Quantity quantity = fillQuantity(measureUnit, recipe);
-                Ingredient ingredient = fillIngredient(quantity);
+                Country country = countryService.save(fillCountry());
+                Recipe recipe = recipeService.save(fillRecipe(user, country, dishCategory));
+                Quantity quantity = quantityService.save(fillQuantity(measureUnit, recipe));
+                Ingredient ingredient = ingredientService.save(fillIngredient(quantity));
             }
         }
     }
@@ -147,21 +158,7 @@ public class DbFiller {
         generatedAuthentication.setRole(randomChoice(rolePath));
         generatedAuthentication.setLogin(randomChoice(loginPath));
         generatedAuthentication.setPassword(randomChoice(passwordPath));
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-//        generatedAuthentication.setUser(user);
+       generatedAuthentication.setUser(user);
         return generatedAuthentication;
     }
 
@@ -170,16 +167,20 @@ public class DbFiller {
         generatedCountry.setName(randomChoice(countryPath));
         return generatedCountry;
     }
-    private Recipe fillRecipe(User user, Country country, DishCategory category){
-        Recipe generatedRecipe = new Recipe();
 
-        generatedRecipe.setImagePath(randomChoice(linkPath));
-        generatedRecipe.setName(randomChoice(recipeNamePath));
+    private Recipe fillRecipe(User user, Country country, DishCategory category){
+        double min = 1.0;
+        double max = 5.0;
+        Double rating = Math.round((Math.random() * (max - min) + min) * 10.0) / 10.0;
+
+        Recipe generatedRecipe = new Recipe();
+        generatedRecipe.setImageName(randomChoice(linkPath));
+        generatedRecipe.setName("r");
         generatedRecipe.setDescription(randomChoice(descriptionPath));
         generatedRecipe.setInstruction(randomChoice(instructionPath));
-        generatedRecipe.setCookingTime(random.nextInt(30,250));
-        generatedRecipe.setRating(random.nextDouble(1, 6));
-        generatedRecipe.setImagePath(imageLinkPath);
+        generatedRecipe.setCookingTime(random.nextInt(1, 251));
+        generatedRecipe.setRating(rating);
+        generatedRecipe.setImageName(randomChoice(imageLinkPath));
         generatedRecipe.setUser(user);
         generatedRecipe.setDishType(randomChoice(dishTypePath));
         generatedRecipe.setCategory(category);
@@ -219,7 +220,7 @@ public class DbFiller {
      * @return The randomly chosen element.
      */
     private <T> T randomChoice(List<T> list) {
-        int choice = new Random().nextInt(list.size());
+        int choice = new Random().nextInt(0, list.size());
         return list.get(choice);
     }
 }

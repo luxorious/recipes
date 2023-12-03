@@ -1,7 +1,6 @@
 package com.recipes.service.pdfgeneration;
 
 import com.recipes.entity.Recipe;
-import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +13,7 @@ public interface RecipePdfGenerator {
      * @return The PDDocument representing the generated recipes book.
      * @throws IOException If an I/O exception occurs while generating the document.
      */
-    PDDocument generateRecipesBook(List<Recipe> recipes) throws IOException;
+    String generateRecipesBook(List<Recipe> recipes) throws IOException;
 
     /**
      * Generates a PDF document based on the provided recipe.
@@ -24,5 +23,5 @@ public interface RecipePdfGenerator {
      * @return The generated PDF document.
      * @throws IOException If an I/O error occurs during PDF creation.
      */
-    PDDocument generateRecipe(Recipe recipe) throws IOException;
+    String generateRecipe(Recipe recipe) throws IOException;
 }

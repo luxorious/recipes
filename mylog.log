@@ -1,226 +1,47 @@
-[36m2023-11-20 19:45:45[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-[36m2023-11-20 19:45:46[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.t.s.i.ExceptionHandlerLoggedImpl[0;39m - GenerationTarget encountered exception accepting command : Error executing DDL "alter table quantities drop foreign key FKl39d0hv89hyy7dcn3uj2bgr4d" via JDBC [Can't DROP 'FKl39d0hv89hyy7dcn3uj2bgr4d'; check that column/key exists]
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table quantities drop foreign key FKl39d0hv89hyy7dcn3uj2bgr4d" via JDBC [Can't DROP 'FKl39d0hv89hyy7dcn3uj2bgr4d'; check that column/key exists]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:92)
-	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:235)
-	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:219)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:455)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:242)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143)
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140)
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:292)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1455)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1155)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:932)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.recipes.RecipesApplication.main(RecipesApplication.java:14)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FKl39d0hv89hyy7dcn3uj2bgr4d'; check that column/key exists
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:78)
-	... 43 common frames omitted
-[36m2023-11-20 19:45:48[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[36m2023-11-20 19:47:07[0;39m [31mWARN [0;39m [http-nio-8080-exec-2] [33mo.h.e.j.s.SqlExceptionHelper[0;39m - SQL Error: 1452, SQLState: 23000
-[36m2023-11-20 19:47:07[0;39m [31mWARN [0;39m [http-nio-8080-exec-2] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Cannot add or update a child row: a foreign key constraint fails (`receipt`.`authentications`, CONSTRAINT `FK3nifxk39y3boh8q91nfnpfjf1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))] [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; SQL [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; constraint [null]]
-[36m2023-11-20 19:47:41[0;39m [31mWARN [0;39m [http-nio-8080-exec-9] [33mo.h.e.j.s.SqlExceptionHelper[0;39m - SQL Error: 1452, SQLState: 23000
-[36m2023-11-20 19:47:41[0;39m [31mWARN [0;39m [http-nio-8080-exec-9] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Cannot add or update a child row: a foreign key constraint fails (`receipt`.`authentications`, CONSTRAINT `FK3nifxk39y3boh8q91nfnpfjf1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))] [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; SQL [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; constraint [null]]
-[36m2023-11-20 19:48:40[0;39m [31mWARN [0;39m [http-nio-8080-exec-10] [33mo.h.e.j.s.SqlExceptionHelper[0;39m - SQL Error: 1062, SQLState: 23000
-[36m2023-11-20 19:48:40[0;39m [31mWARN [0;39m [http-nio-8080-exec-10] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Duplicate entry '4' for key 'authentications.UK_sjiubbloq36p1q26ihvy31ig1'] [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; SQL [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; constraint [authentications.UK_sjiubbloq36p1q26ihvy31ig1]]
-[36m2023-11-20 21:03:19[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-[36m2023-11-20 21:03:22[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[36m2023-11-20 23:27:09[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-[36m2023-11-20 23:27:09[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[36m2023-11-21 00:11:38[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-[36m2023-11-21 00:11:42[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[36m2023-11-21 00:11:51[0;39m [31mWARN [0;39m [http-nio-8080-exec-4] [33mo.s.c.u.SpringDocAnnotationsUtils[0;39m - Graceful exception occurred
-java.lang.IllegalArgumentException: Conflicting setter definitions for property "normalAppearance": org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary#setNormalAppearance(org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceEntry) vs org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary#setNormalAppearance(org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceStream)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder._selectSetterFromMultiple(POJOPropertyBuilder.java:561)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.getSetter(POJOPropertyBuilder.java:492)
-	at io.swagger.v3.core.jackson.ModelResolver.ignore(ModelResolver.java:1051)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:580)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:444)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:444)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.jackson.ModelResolver.resolve(ModelResolver.java:656)
-	at org.springdoc.core.converters.AdditionalModelsConverter.resolve(AdditionalModelsConverter.java:155)
-	at org.springdoc.core.converters.FileSupportConverter.resolve(FileSupportConverter.java:69)
-	at org.springdoc.core.converters.ResponseSupportConverter.resolve(ResponseSupportConverter.java:79)
-	at org.springdoc.core.converters.SchemaPropertyDeprecatingConverter.resolve(SchemaPropertyDeprecatingConverter.java:92)
-	at org.springdoc.core.converters.PolymorphicModelConverter.resolve(PolymorphicModelConverter.java:77)
-	at org.springdoc.core.converters.PageableOpenAPIConverter.resolve(PageableOpenAPIConverter.java:93)
-	at org.springdoc.core.converters.SortOpenAPIConverter.resolve(SortOpenAPIConverter.java:83)
-	at io.swagger.v3.core.converter.ModelConverterContextImpl.resolve(ModelConverterContextImpl.java:97)
-	at io.swagger.v3.core.converter.ModelConverters.resolveAsResolvedSchema(ModelConverters.java:110)
-	at org.springdoc.core.utils.SpringDocAnnotationsUtils.extractSchema(SpringDocAnnotationsUtils.java:122)
-	at org.springdoc.core.service.GenericResponseService.calculateSchema(GenericResponseService.java:553)
-	at org.springdoc.core.service.GenericResponseService.buildContent(GenericResponseService.java:512)
-	at org.springdoc.core.service.GenericResponseService.buildContent(GenericResponseService.java:493)
-	at org.springdoc.core.service.GenericResponseService.buildApiResponses(GenericResponseService.java:585)
-	at org.springdoc.core.service.GenericResponseService.buildApiResponses(GenericResponseService.java:447)
-	at org.springdoc.core.service.GenericResponseService.build(GenericResponseService.java:247)
-	at org.springdoc.api.AbstractOpenApiResource.calculatePath(AbstractOpenApiResource.java:475)
-	at org.springdoc.api.AbstractOpenApiResource.calculatePath(AbstractOpenApiResource.java:652)
-	at org.springdoc.webmvc.api.OpenApiResource.lambda$calculatePath$11(OpenApiResource.java:219)
-	at java.base/java.util.Optional.ifPresent(Optional.java:178)
-	at org.springdoc.webmvc.api.OpenApiResource.calculatePath(OpenApiResource.java:200)
-	at org.springdoc.webmvc.api.OpenApiResource.lambda$getPaths$2(OpenApiResource.java:170)
-	at java.base/java.util.Optional.ifPresent(Optional.java:178)
-	at org.springdoc.webmvc.api.OpenApiResource.getPaths(OpenApiResource.java:149)
-	at org.springdoc.api.AbstractOpenApiResource.getOpenApi(AbstractOpenApiResource.java:334)
-	at org.springdoc.webmvc.api.OpenApiResource.openapiJson(OpenApiResource.java:124)
-	at org.springdoc.webmvc.api.OpenApiWebMvcResource.openapiJson(OpenApiWebMvcResource.java:111)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:1589)
-[36m2023-11-21 00:18:44[0;39m [31mWARN [0;39m [http-nio-8080-exec-6] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class org.apache.pdfbox.cos.COSBase]]
-[36m2023-11-21 06:58:16[0;39m [31mWARN [0;39m [HikariPool-1 housekeeper] [33mc.z.h.p.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h30s754ms426µs500ns).
-[36m2023-11-21 10:31:47[0;39m [31mWARN [0;39m [HikariPool-1 housekeeper] [33mc.z.h.p.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h30s835ms163µs800ns).
-[36m2023-11-21 13:08:07[0;39m [31mWARN [0;39m [HikariPool-1 housekeeper] [33mc.z.h.p.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h4m49s21ms887µs100ns).
+[36m2023-12-03 18:34:59[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 18:35:06[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 18:35:25[0;39m [31mWARN [0;39m [http-nio-8080-exec-2] [33mo.h.e.j.s.SqlExceptionHelper[0;39m - SQL Error: 1062, SQLState: 23000
+[36m2023-12-03 18:35:25[0;39m [31mWARN [0;39m [http-nio-8080-exec-2] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Duplicate entry '1' for key 'authentications.UK_sjiubbloq36p1q26ihvy31ig1'] [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; SQL [insert into authentications (login,password,role,user_id) values (?,?,?,?)]; constraint [authentications.UK_sjiubbloq36p1q26ihvy31ig1]]
+[36m2023-12-03 18:41:37[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 18:41:45[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:07:39[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:07:46[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:08:58[0;39m [31mWARN [0;39m [http-nio-8080-exec-1] [33mo.s.w.s.m.s.DefaultHandlerExceptionResolver[0;39m - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present]
+[36m2023-12-03 19:14:45[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:14:51[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:15:02[0;39m [31mWARN [0;39m [http-nio-8080-exec-2] [33mo.s.w.s.m.m.a.ExceptionHandlerExceptionResolver[0;39m - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.recipes.dto.user.UserInfoDTO com.recipes.controller.UserController.createUser(com.recipes.dto.user.CreateUserDTO): [Field error in object 'createUserDTO' on field 'link': rejected value [null]; codes [NotBlank.createUserDTO.link,NotBlank.link,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createUserDTO.link,link]; arguments []; default message [link]]; default message [не може бути пустим]] ]
+[36m2023-12-03 19:21:53[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:21:59[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:24:00[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:24:05[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:33:13[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:33:20[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:35:06[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:35:12[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 19:40:21[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 19:40:27[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[0;39m - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationController' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\controller\AuthenticationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'authenticationServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\AuthenticationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'authenticationDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\AuthenticationDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\UserDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'recipeDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\RecipeDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl': Requested bean is currently in creation: Is there an unresolvable circular reference?
+[36m2023-12-03 20:19:39[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 20:19:45[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 20:44:09[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 20:44:15[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 20:46:37[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 20:46:42[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 22:17:36[0;39m [31mWARN [0;39m [HikariPool-1 housekeeper] [33mc.z.h.p.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h27m197ms547µs700ns).
+[36m2023-12-03 22:30:43[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 22:30:49[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[0;39m - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationController' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\controller\AuthenticationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'authenticationServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\AuthenticationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'authenticationDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\AuthenticationDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\UserDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'recipeDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\RecipeDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl': Requested bean is currently in creation: Is there an unresolvable circular reference?
+[36m2023-12-03 22:52:05[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 22:52:09[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 22:58:52[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 22:58:56[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 23:15:56[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:16:00[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 23:29:36[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:29:37[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[0;39m - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationController' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\controller\AuthenticationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'authenticationServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\AuthenticationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'authenticationDTOConverterImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\converter\implementations\AuthenticationDTOConverterImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Вова\Documents\TelRan\recipes\target\classes\com\recipes\service\crud\implementation\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'com.recipes.converter.interfaces.UserDTOConverter' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+[36m2023-12-03 23:29:41[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:29:43[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 23:31:02[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:31:04[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[0;39m - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'DBFillerController': Resolution of declared constructors on bean Class [com.recipes.controller.DBFillerController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@292fbd54] failed
+[36m2023-12-03 23:31:08[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:31:10[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36m2023-12-03 23:31:22[0;39m [31mWARN [0;39m [restartedMain] [33mo.h.o.deprecation[0;39m - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[36m2023-12-03 23:31:26[0;39m [31mWARN [0;39m [restartedMain] [33mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

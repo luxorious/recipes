@@ -2,8 +2,8 @@ package com.recipes.schedule;
 
 import com.recipes.entity.Recipe;
 import com.recipes.entity.User;
-import com.recipes.service.interfaces.MailSenderService;
-import com.recipes.service.interfaces.UserService;
+import com.recipes.service.crud.interfaces.UserService;
+import com.recipes.service.mailsender.MailSenderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,9 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class ScheduledReportGenerationImpl implements ScheduledReportGeneration {
-//ідея додатковому функціоналу
-//зробити розсилку репортів по тайм зонах відносно клієнтського часу (додати в сутність User тайм зону)
+public class ScheduledReportGenerationImpl {
+
     private final UserService userService;
     private final MailSenderService mailSender;
 
@@ -33,7 +32,6 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
      * Method use another Thread and save report in ConcurrentHashMap
      * Scheduled is midnight every month
      */
-    @Override
     @Scheduled(cron = "0 0 0 1 * ?")//midnight every month
     public void generateReports() {
         report = new ConcurrentHashMap<>();
@@ -50,10 +48,9 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
 
     /**
      * Scheduled method for sending reports (using another thread)
-     * Send report retrieves data (mail and message text) from Map and
+     * Sends report retrieves data (mail and message text) from Map and
      * sends them at midday on the 1st day of each month.
      */
-    @Override
     @Scheduled(cron = "0 0 12 1 * ?")//midday every month
     public void sendReports() {
         Thread sendReportThread = new Thread(() -> {
@@ -70,7 +67,7 @@ public class ScheduledReportGenerationImpl implements ScheduledReportGeneration 
      * Create a message text based on a list of recipes.
      *
      * @param recipes List of recipes from which the notification is generated
-     * @return Generated message from name and rating from recipe
+     * @return Generated message from name and rating from a recipe
      */
     private synchronized String createMessage(List<Recipe> recipes) {
         String message = "";

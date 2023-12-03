@@ -44,14 +44,19 @@ public class Main {
         recipe.setCookingTime(120);
         recipe.setDishType("Перша страва");
         recipe.setUser(user);
-        recipe.setImagePath("src/main/resources/pdf-resources/12.jpg");
+        recipe.setImageName("src/main/resources/pdf-resources/12.jpg");
         List<Recipe> recipes = List.of(recipe, recipe, recipe);
 //        generator.generateRecipe(recipe);
 //        generator.generateRecipesBook(recipes);
         PDDocument document = new PDDocument();
 
-        document=generator.generateRecipesBook(recipes);
+        String strbo = generator.generateRecipesBook(recipes);
 
-        document.save("recipes.pdf");
+//        document.save("recipes.pdf");
+        String page = generator.generateRecipe(recipe);
+
+        System.out.println(strbo + " book");
+        System.out.println(page + " page");
     }
+
 }
