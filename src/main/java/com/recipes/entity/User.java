@@ -1,21 +1,19 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.*;
-
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +42,7 @@ public class User {
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @OneToMany(mappedBy = "user", cascade = {MERGE, REFRESH})
+    @OneToMany(mappedBy = "user")//, cascade = {MERGE, REFRESH})
     private List<Recipe> recipes;
 
     @OneToOne(mappedBy = "user")

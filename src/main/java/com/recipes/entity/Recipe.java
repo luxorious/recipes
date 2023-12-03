@@ -1,19 +1,21 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
-
-import static jakarta.persistence.CascadeType.*;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Recipe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -37,26 +39,26 @@ public class Recipe {
     @Column(name = "dish_type", length = 32)
     private String dishType;
 
-    @Column(name = "image_path")
-    private String imagePath;
+    @Column(name = "image_name")
+    private String imageName;
 
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Timestamp createdAt;
 
 
-    @ManyToOne(cascade = {MERGE, REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private DishCategory category;
 
-    @ManyToOne(cascade = {MERGE, REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(mappedBy = "recipe")
-    private Quantity quantity;
+    @OneToMany(mappedBy = "recipe")
+    private List<Quantity> quantity;
 
-    @ManyToOne(cascade = {MERGE, REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "countries_id", referencedColumnName = "id")
     private Country country;
 }

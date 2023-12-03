@@ -1,12 +1,14 @@
 package com.recipes.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "authentications")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Authentication {
     @Id

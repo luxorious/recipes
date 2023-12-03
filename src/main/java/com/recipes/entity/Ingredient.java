@@ -16,7 +16,7 @@ public class Ingredient {
     @Column(name = "name", length = 128)
     private String name;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "quantity_id", referencedColumnName = "id")
     private Quantity quantity;
 
