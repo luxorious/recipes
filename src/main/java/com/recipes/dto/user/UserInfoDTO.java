@@ -18,7 +18,7 @@ public class UserInfoDTO {
     private String eMail;
     private String aboutMe;
     private String skills;
-    private String links;
+    private String link;
     private Timestamp createdAt;
     private List<RecipeDTO> recipes;
 }

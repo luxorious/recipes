@@ -2,6 +2,7 @@ package com.recipes.dto.authentication;
 
 import com.recipes.validation.anotations.PasswordValidator;
 import com.recipes.validation.anotations.RollValidator;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,6 @@ public class CreateAuthenticationDTO {
     @PasswordValidator
     private String password;
 
+    @Min(1)
     private Long userId;
-//    private User user;
 }

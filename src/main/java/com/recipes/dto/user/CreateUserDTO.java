@@ -12,21 +12,27 @@ import org.hibernate.validator.constraints.URL;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserDTO {
+
     @NotBlank
     @NotNull
     private String firstName;
+
     @NotBlank
     @NotNull
     private String lastName;
+
     @Email
     private String eMail;
+
     @NotBlank
     @NotNull
     private String aboutMe;
+
     @NotBlank
     @NotNull
     private String skills;
+
     @NotBlank
     @URL
-    private String links;
+    private String link;
 }

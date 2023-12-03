@@ -1,5 +1,7 @@
-package com.recipes.dto.measureUnit;
+package com.recipes.dto.measureunit;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,5 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasureUnitDTO {
+
+    @NotBlank
+    @NotNull
     private String unit;
 }
