@@ -1,7 +1,7 @@
 package com.recipes.controller;
 
 import com.recipes.dto.ingredient.IngredientDTO;
-import com.recipes.service.interfaces.IngredientService;
+import com.recipes.service.crud.interfaces.IngredientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
