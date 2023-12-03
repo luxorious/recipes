@@ -12,6 +12,10 @@ import java.util.List;
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     @Query("SELECT recipe FROM Recipe recipe " +
+            "WHERE recipe.name = :recipeName")
+    List<Recipe> findByRecipeName(String recipeName);
+
+    @Query("SELECT recipe FROM Recipe recipe " +
             "WHERE recipe.country.name = :country")
     List<Recipe> findAllByCountry(String country);
 
@@ -27,44 +31,38 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     @Modifying
     @Query("UPDATE Recipe recipe " +
             "SET recipe.description = :description " +
-            "WHERE recipe.name = :name")
-    void updateDescriptionByName(String name, String description);
+            "WHERE recipe.id = :id")
+    void updateDescriptionById(Long id, String description);
 
     @Modifying
     @Query("UPDATE Recipe recipe " +
             "SET recipe.instruction = :instruction " +
-            "WHERE recipe.name = :name")
-    void updateInstructionByName(String name, String instruction);
+            "WHERE recipe.id = :id")
+    void updateInstructionById(Long id, String instruction);
 
     @Modifying
     @Query("UPDATE Recipe recipe " +
             "SET recipe.dishType = :dishType " +
-            "WHERE recipe.name = :name")
-    void updateDishTypeByName(String name, String dishType);
+            "WHERE recipe.id = :id")
+    void updateDishTypeById(Long id, String dishType);
 
     @Modifying
     @Query("UPDATE Recipe recipe " +
-            "SET recipe.imagePath = :imagePath " +
-            "WHERE recipe.name = :name")
-    void updateImagePathByName(String name, String imagePath);
+            "SET recipe.imageName = :imagePath " +
+            "WHERE recipe.id = :id")
+    void updateImagePathById(Long id, String imagePath);
 
     @Modifying
     @Query("UPDATE Recipe recipe " +
             "SET recipe.cookingTime = :cookingTime " +
-            "WHERE recipe.name = :name")
-    void updateCookingTimeByName(String name, Integer cookingTime);
+            "WHERE recipe.id = :id")
+    void updateCookingTimeById(Long id, Integer cookingTime);
 
     @Modifying
     @Query("UPDATE Recipe recipe " +
             "SET recipe.name = :newName " +
-            "WHERE recipe.name = :name")
-    void updateNameTimeByName(String name, String newName);
-
-    @Modifying
-    @Query("DELETE FROM Recipe recipe " +
-            "WHERE recipe.name = :name " +
-            "AND recipe.user.id = :userId")
-    boolean deleteByNameAndUserId(String name, Long userId);
+            "WHERE recipe.id = :id")
+    void updateNameById(Long id, String newName);
 
     @Modifying
     @Query("DELETE FROM Recipe recipe " +

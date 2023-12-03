@@ -36,6 +36,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "SET user.eMail = :eMail " +
             "WHERE user.id =:id")
     void updateUserByIdAndEMail(Long id, String eMail);
+
     @Modifying
     @Query("UPDATE User user " +
             "SET user.aboutMe = :aboutMe " +
@@ -46,12 +47,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("UPDATE User user " +
             "SET user.skills = :skills " +
             "WHERE user.id =:id")
-    void updateUserByIdAndSkills(Long id, String skills);//можна зробити списком
+    void updateUserByIdAndSkills(Long id, String skills);
+
     @Modifying
     @Query("UPDATE User user " +
             "SET user.link = :link " +
             "WHERE user.id =:id")
-    void updateUserByIdAndLink(Long id, String link);//можна зробити списком
+    void updateUserByIdAndLink(Long id, String link);
 
     @Modifying
     @Query("DELETE FROM User user " +

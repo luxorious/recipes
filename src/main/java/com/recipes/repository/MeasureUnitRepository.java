@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface MeasureUnitRepository extends JpaRepository<MeasureUnit, Long> {
+
     @Query("SELECT measureUnit FROM MeasureUnit measureUnit")
     List<MeasureUnit> findAllMeasureUnits();
 

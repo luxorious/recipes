@@ -30,6 +30,8 @@ public interface AuthenticationRepository extends JpaRepository<Authentication, 
     Authentication updatePasswordByLogin(String login, String password);
 
     @Modifying
-    @Query("DELETE FROM Authentication a WHERE a.login = :login AND a.password = :password")
+    @Query("DELETE FROM Authentication a " +
+            "WHERE a.login = :login " +
+            "AND a.password = :password")
     boolean deleteByLoginAndPassword(String login, String password);
 }
