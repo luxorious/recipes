@@ -3,9 +3,8 @@ package com.recipes.controller;
 import com.recipes.dto.user.CreateUserDTO;
 import com.recipes.dto.user.PrivateInfoUserDTO;
 import com.recipes.dto.user.UserInfoDTO;
-import com.recipes.service.interfaces.UserService;
+import com.recipes.service.crud.interfaces.UserService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/find-by-id/{id}")
-    public PrivateInfoUserDTO getPrivateUserInfo(@PathVariable @Min(1) Long id) {
+    public PrivateInfoUserDTO getPrivateUserInfo(@PathVariable Long id) {
         return userService.getPrivateUserInfo(id);
     }
 
