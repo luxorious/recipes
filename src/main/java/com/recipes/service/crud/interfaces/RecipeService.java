@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface RecipeService {
 
-
     Recipe findById(Long id);
 
     List<RecipeDTO> findAll();
@@ -17,6 +16,8 @@ public interface RecipeService {
     RecipeDTO save(CreateReceiptDTO receiptDTO, MultipartFile file);
 
     List<Recipe> findAllRecipeEntities();
+
+    List<Recipe> findAllRecipeEntitiesByListId(List<Long> listId);
 
     List<RecipeDTO> findAllByCountry(String country);
 

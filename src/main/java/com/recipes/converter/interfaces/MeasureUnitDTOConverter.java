@@ -6,6 +6,7 @@ import com.recipes.entity.MeasureUnit;
 import java.util.List;
 
 public interface MeasureUnitDTOConverter {
+
     MeasureUnitDTO toDto(MeasureUnit entity);
 
     MeasureUnit toEntity(MeasureUnitDTO dto);

@@ -7,7 +7,7 @@ import com.recipes.dto.authentication.RestorePasswordDTO;
 import com.recipes.entity.Authentication;
 import com.recipes.repository.AuthenticationRepository;
 import com.recipes.service.crud.interfaces.AuthenticationService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Data
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
+
     private final AuthenticationRepository repository;
     private final AuthenticationDTOConverter authenticationDTOConverter;
     private final NullChecker<Authentication> nullChecker;
@@ -47,7 +48,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationDTO updateAuthenticationPasswordByLogin(RestorePasswordDTO passwordDTO) {
         Authentication auth = nullChecker.entity(repository.findByLogin(passwordDTO.getLogin()));
-        if (auth.getUser().getEMail().equals(passwordDTO.getEMail())){
+        if (auth.getUser().getEMail().equals(passwordDTO.getEMail())) {
             return authenticationDTOConverter.toDto(
                     repository.updatePasswordByLogin(
                             passwordDTO.getLogin(), passwordDTO.getNewPassword()));

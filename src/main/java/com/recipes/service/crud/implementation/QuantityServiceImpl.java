@@ -5,7 +5,7 @@ import com.recipes.dto.quantity.QuantityDTO;
 import com.recipes.entity.Quantity;
 import com.recipes.repository.QuantityRepository;
 import com.recipes.service.crud.interfaces.QuantityService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class QuantityServiceImpl implements QuantityService {
+
     private final QuantityRepository repository;
     private final QuantityDTOConverter converter;
     private final NullChecker<Quantity> nullChecker;

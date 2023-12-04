@@ -1,20 +1,10 @@
-package com.recipes.service.nullсhecker;
+package com.recipes.service.nullchecker;
 
 import com.recipes.exceptions.ValidationException;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface NullChecker<T> {
-
-    /**
-     * Checks if the input list is not null.
-     *
-     * @param t The list to be checked for null.
-     * @return The input list if it is not null.
-     * @throws ValidationException If the input list is null, a ValidationException is thrown.
-     */
-    List<T> list(List<T> t);
 
     /**
      * Returns the value from the given Optional if present.

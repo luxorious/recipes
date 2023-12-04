@@ -18,7 +18,7 @@ public class CreateAuthenticationDTO {
     private String role;
 
     @NotNull
-    @NotBlank(message = "login can not be empty")
+    @NotBlank
     private String login;
 
     @PasswordValidator

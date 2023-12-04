@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class IngredientDtoConverterImpl implements IngredientDtoConverter {
+
     private final ModelMapper mapper;
     private final QuantityService quantityService;
 

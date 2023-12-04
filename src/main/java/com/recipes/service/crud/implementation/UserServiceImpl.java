@@ -7,7 +7,7 @@ import com.recipes.dto.user.UserInfoDTO;
 import com.recipes.entity.User;
 import com.recipes.repository.UserRepository;
 import com.recipes.service.crud.interfaces.UserService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

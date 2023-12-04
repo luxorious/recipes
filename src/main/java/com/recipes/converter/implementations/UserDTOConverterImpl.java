@@ -24,20 +24,13 @@ public class UserDTOConverterImpl implements UserDTOConverter {
     @Override
     public UserInfoDTO toDtoUserInfo(User user) {
         UserInfoDTO userInfoDTO = mapper.map(user, UserInfoDTO.class);
-        List<RecipeDTO>recipeDTOS = userInfoDTO.getRecipes();
+        List<RecipeDTO> recipeDTOS = userInfoDTO.getRecipes();
         for (int i = 0; i < recipeDTOS.size(); i++) {
             //the algorithm needs to be improved, because now I am writing the same code twice
             recipeDTOS.get(i).setFirstName(user.getFirstName());
             recipeDTOS.get(i).setLastName(user.getLastName());
             recipeDTOS.get(i).setCategoryName(user.getRecipes().get(i).getCategory().getCategoryName());
             recipeDTOS.get(i).setCountryName(user.getRecipes().get(i).getCountry().getName());
-
-            System.out.println("========================UserDTOConverterImpl====toDtoUserInfo===================================");
-            System.out.println(recipeDTOS.get(i).getFirstName());
-            System.out.println(recipeDTOS.get(i).getLastName());
-            System.out.println(recipeDTOS.get(i).getCountryName());
-            System.out.println(recipeDTOS.get(i).getCategoryName());
-            System.out.println("========================UserDTOConverterImpl====toDtoUserInfo===================================");
         }
         return userInfoDTO;
     }
@@ -59,7 +52,7 @@ public class UserDTOConverterImpl implements UserDTOConverter {
 
     @Override
     public List<UserInfoDTO> toListDto(List<User> users) {
-                return users.stream()
+        return users.stream()
                 .map(this::toDtoUserInfo)
                 .collect(Collectors.toList());
     }

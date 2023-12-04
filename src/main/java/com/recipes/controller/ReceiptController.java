@@ -26,28 +26,28 @@ public class ReceiptController {
     @PostMapping("/save")
     public RecipeDTO save(
             @Valid @RequestPart CreateReceiptDTO receiptDTO,
-            @RequestPart MultipartFile file ) {
+            @RequestPart MultipartFile file) {
 
         return receiptService.save(receiptDTO, file);
     }
 
     @GetMapping("/find-by-country")
-    public List<RecipeDTO> findAllByCountry(@RequestParam  String country)   {
+    public List<RecipeDTO> findAllByCountry(@RequestParam String country) {
         return receiptService.findAllByCountry(country);
     }
 
     @GetMapping("/find-by-category")
-    public List<RecipeDTO> findAllByCategory(@RequestParam String categoryName)  {
+    public List<RecipeDTO> findAllByCategory(@RequestParam String categoryName) {
         return receiptService.findAllByCategory(categoryName);
     }
 
     @GetMapping("/find-by-author-full-name")
-    public List<RecipeDTO> findAllByAuthorsFullName(@RequestParam String fullName){
+    public List<RecipeDTO> findAllByAuthorsFullName(@RequestParam String fullName) {
         return receiptService.findAllByAuthorsFullName(fullName);
     }
 
     @GetMapping("/find-by-recipes-name")
-    public List<RecipeDTO> findByName(@RequestParam String name){
+    public List<RecipeDTO> findByName(@RequestParam String name) {
         return receiptService.findByRecipeName(name);
     }
 
@@ -59,7 +59,7 @@ public class ReceiptController {
 
     @PutMapping("/update-instructions/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateInstructionById(@PathVariable Long id,@RequestParam  String instruction) {
+    public void updateInstructionById(@PathVariable Long id, @RequestParam String instruction) {
         receiptService.updateInstructionById(id, instruction);
     }
 

@@ -16,6 +16,7 @@ public @interface PasswordValidator {
 
     String message() default
             "the password must have a minimum 8 characters, at least one letter and one number";
+
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};

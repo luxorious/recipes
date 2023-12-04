@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class QuantityDTOConverterImpl implements QuantityDTOConverter {
+
     private final ModelMapper mapper;
     private final MeasureUnitService measureUnitService;
     private final RecipeService recipeService;
@@ -24,9 +25,9 @@ public class QuantityDTOConverterImpl implements QuantityDTOConverter {
     public QuantityDTO toDto(Quantity entity) {
         return mapper.typeMap(Quantity.class, QuantityDTO.class)
                 .addMapping(src -> src.getRecipe().getId(),
-                        (dest, id)-> dest.setRecipeId((Long) id))
-                .addMapping(src->src.getMeasureUnit().getId(),
-                        (dest, id)->dest.setMeasureUnitsId((Long) id))
+                        (dest, id) -> dest.setRecipeId((Long) id))
+                .addMapping(src -> src.getMeasureUnit().getId(),
+                        (dest, id) -> dest.setMeasureUnitsId((Long) id))
                 .map(entity);
     }
 

@@ -9,6 +9,6 @@ public class MailSenderServiceImpl implements MailSenderService {
 
     @Override
     public synchronized void send(String mail, String text) {
-        //do something )
+        //do something
     }
 }

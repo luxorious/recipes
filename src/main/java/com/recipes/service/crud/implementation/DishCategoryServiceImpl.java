@@ -5,7 +5,7 @@ import com.recipes.dto.category.DishCategoryDTO;
 import com.recipes.entity.DishCategory;
 import com.recipes.repository.DishCategoryRepository;
 import com.recipes.service.crud.interfaces.DishCategoryService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class DishCategoryServiceImpl implements DishCategoryService {
+
     private final DishCategoryRepository repository;
     private final DishCategoryConverter converter;
     private final NullChecker<DishCategory> checker;

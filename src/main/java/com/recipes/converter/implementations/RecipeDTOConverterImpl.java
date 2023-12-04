@@ -2,7 +2,6 @@ package com.recipes.converter.implementations;
 
 import com.recipes.converter.interfaces.RecipeDTOConverter;
 import com.recipes.dto.receipt.CreateReceiptDTO;
-import com.recipes.dto.receipt.ListRecipesDTO;
 import com.recipes.dto.receipt.RecipeDTO;
 import com.recipes.entity.Country;
 import com.recipes.entity.DishCategory;
@@ -34,15 +33,12 @@ public class RecipeDTOConverterImpl implements RecipeDTOConverter {
     @Override
     public RecipeDTO toDto(Recipe recipe) {
         RecipeDTO dto = mapper.map(recipe, RecipeDTO.class);
+
         dto.setLastName(recipe.getUser().getLastName());
         dto.setFirstName(recipe.getUser().getFirstName());
         dto.setCountryName(recipe.getCountry().getName());
         dto.setCategoryName(recipe.getCategory().getCategoryName());
 
-        System.out.println(dto.getLastName() + "----------toDto--------getLastName--------RecipeDTOConverter------");
-        System.out.println(dto.getFirstName() + "---------toDto--------getFirstName-------------");
-        System.out.println(dto.getCountryName() + "-----------toDto--------getCountry---------------");
-        System.out.println(dto.getCategoryName() + "------toDto--------getCategoryName----------");
         return dto;
     }
 
@@ -67,17 +63,8 @@ public class RecipeDTOConverterImpl implements RecipeDTOConverter {
         List<RecipeDTO> listDto = new ArrayList<>();
         for (Recipe recipe : recipes) {
             RecipeDTO dto = toDto(recipe);
-
-            System.out.println(recipe.getUser().getLastName() + "------------------getLastName--------------");
-            System.out.println(recipe.getUser().getFirstName() + "-----------------getFirstName-------------");
-            System.out.println(recipe.getCountry().getName() + "-------------------getCountry---------------");
-            System.out.println(recipe.getCategory().getCategoryName() + "--------------getCategoryName----------");
             listDto.add(dto);
         }
         return listDto;
-    }
-
-    public ListRecipesDTO listCreate(List<Recipe> recipes){
-        return null;
     }
 }

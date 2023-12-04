@@ -6,6 +6,7 @@ import com.recipes.entity.Country;
 import java.util.List;
 
 public interface CountryDTOConverter {
+
     CountryDTO toDto(Country entity);
 
     Country toEntity(CountryDTO dto);

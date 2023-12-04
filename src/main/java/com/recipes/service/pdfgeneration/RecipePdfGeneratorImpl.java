@@ -1,6 +1,7 @@
 package com.recipes.service.pdfgeneration;
 
 import com.recipes.entity.Recipe;
+import jakarta.annotation.PostConstruct;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -19,113 +20,116 @@ import java.util.List;
 public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
 
     @Value("${savingFiles.pathSavingPDfBook}")
-    private String pathSavingPDfBook ="src/main/resources/save-recipes/book-";
+    private String pathSavingPDfBook;
 
     @Value("${savingFiles.pathSavingPDfPage}")
-    private String pathSavingPDfPage ="src/main/resources/save-recipes/page-";
+    private String pathSavingPDfPage;
 
     @Value("${savingFiles.bookFormat}")
-    private String bookFormat=".pdf";
+    private String bookFormat;
 
     @Value(value = "${recipePdfGenerator.fontPath}")
-    private String fontPath = "src/main/resources/times.ttf";
+    private String fontPath;
 
     @Value(value = "${recipePdfGenerator.imgBookCover}")
-    private String imgBookCover = "src/main/resources/pdf-resources/cover.jpg";
+    private String imgBookCover;
 
     @Value(value = "${recipePdfGenerator.logoPath}")
-    private String logoPath = "src/main/resources/logo/logo.png";
+    private String logoPath;
 
     @Value(value = "${recipePdfGenerator.logoHeight}")
-    private float logoHeight = 20;
+    private float logoHeight;
 
     @Value(value = "${recipePdfGenerator.logoWidth}")
-    private float logoWidth = 20;
+    private float logoWidth;
 
     @Value(value = "${recipePdfGenerator.link}")
-    private String link = "recipes.com";
+    private String link;
 
     @Value(value = "${recipePdfGenerator.startPositionFooterBlock1}")
-    private float startPositionFooterBlock1 = 20;
+    private float startPositionFooterBlock1;
 
     @Value(value = "${recipePdfGenerator.imgPathDishType}")
-    private String imgDishType = "src/main/resources/pdf-resources/dishType.png";
+    private String imgDishType;
 
     @Value(value = "${recipePdfGenerator.startPositionFooterBlock2}")
-    private float startPositionFooterBlock2 = 185;
+    private float startPositionFooterBlock2;
 
     @Value(value = "${recipePdfGenerator.imgPathRating}")
-    private String imgPathRating = "src/main/resources/pdf-resources/rating.png";
+    private String imgPathRating;
 
     @Value(value = "${recipePdfGenerator.startPositionFooterBlock3}")
-    private float startPositionFooterBlock3 = 370;
+    private float startPositionFooterBlock3;
 
     @Value(value = "${recipePdfGenerator.imgPathCockingTime}")
-    private String imgCockingTime = "src/main/resources/pdf-resources/cockingTime.png";
+    private String imgCockingTime;
 
     @Value(value = "${recipePdfGenerator.startPositionX}")
-    private float startPositionX = 20f;
+    private float startPositionX;
 
     @Value(value = "${recipePdfGenerator.startPositionXForRecipePhoto}")
-    private float startPositionXForRecipePhoto = 73f;
+    private float startPositionXForRecipePhoto;
 
     @Value(value = "${recipePdfGenerator.recipePhotoWidth}")
-    private float recipePhotoWidth = 450;
+    private float recipePhotoWidth;
 
     @Value(value = "${recipePdfGenerator.recipePhotoHeight}")
-    private float recipePhotoHeight = 200;
+    private float recipePhotoHeight;
 
     @Value(value = "${recipePdfGenerator.fontSizeLink}")
-    private int fontSizeLink = 10;
+    private int fontSizeLink;
 
     @Value(value = "${recipePdfGenerator.fontSizeAuthorName}")
-    private int fontSizeAuthorName = 10;
+    private int fontSizeAuthorName;
 
     @Value(value = "${recipePdfGenerator.fontSizeText}")
-    private int fontSizeText = 14;
+    private int fontSizeText;
 
     @Value(value = "${recipePdfGenerator.fontSizeRecipeName}")
-    private int fontSizeRecipeName = 14;
+    private int fontSizeRecipeName;
 
     @Value(value = "${recipePdfGenerator.footerFontSize}")
-    private int footerFontSize = 20;
+    private int footerFontSize;
 
     @Value(value = "${recipePdfGenerator.footerFontSize}")
-    private int pageNumberFontSize = 10;
+    private int pageNumberFontSize;
 
     @Value(value = "${recipePdfGenerator.tabulation}")
-    private int tabulation = 10;
+    private int tabulation;
 
     @Value(value = "${recipePdfGenerator.footerHeight}")
-    private float footerHeight = 25;
+    private float footerHeight;
 
     @Value(value = "${recipePdfGenerator.iconSize}")
-    private float iconSize = 20;
+    private float iconSize;
 
     @Value(value = "${recipePdfGenerator.textOffset}")
-    private float textOffset = 3;
+    private float textOffset;
 
     @Value(value = "${recipePdfGenerator.content}")
-    private String content = "Зміст";
+    private String content;
 
     @Value(value = "${recipePdfGenerator.startPositionY}")
-    private float startPositionY = 40;
+    private float startPositionY;
 
-    private PDDocument document;// = new PDDocument();
-    private PDType0Font font;// = PDType0Font.load(document, new File(fontPath));
-    private PDPage page;// = new PDPage(PDRectangle.A4);
-    private PDPageContentStream contentStream;//;// = new PDPageContentStream(document, page);
-    private float pageHeight ;//= page.getMediaBox().getHeight() - tabulation;
-    private float pageHeightPoints;//;// = page.getMediaBox().getHeight();
-    private float pageWidth ;//= page.getMediaBox().getWidth();
-    private int pageNumber ;//= 1;
+    private PDDocument document;
+    private PDType0Font font;
+    private PDPage page;
+    private PDPageContentStream contentStream;
+    private float pageHeight;
+    private float pageHeightPoints;
+    private float pageWidth;
+    private int pageNumber;
 
-
-    public RecipePdfGeneratorImpl() throws IOException {
-        init();
-    }
-
-    private void init()throws IOException{
+    /**
+     * Initializes the RecipePdfGeneratorImpl object by setting up the necessary components for PDF generation.
+     * This method sets up the document, font, page, content stream, and other properties required for PDF generation.
+     * It should be called after the object creation using the @PostConstruct annotation.
+     *
+     * @throws IOException If an I/O error occurs during the initialization process.
+     */
+    @PostConstruct
+    private void init() throws IOException {
         this.document = new PDDocument();
         this.font = PDType0Font.load(document, new File(fontPath));
         this.page = new PDPage(PDRectangle.A4);
@@ -155,12 +159,11 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
         generateContents(contents);
         pageNumber = 1;
         contentStream.close();
-        String path = pathSavingPDfBook + System.currentTimeMillis()+bookFormat;
+        String path = pathSavingPDfBook + System.currentTimeMillis() + bookFormat;
         document.save(path);
         document.close();
         init();
 
-        //зробити метод, який повинен автоматично видаляти документ + документ назвати пейдж-час.пдф
         return path;
     }
 
@@ -176,15 +179,21 @@ public class RecipePdfGeneratorImpl implements RecipePdfGenerator {
     public String generateRecipe(Recipe recipe) throws IOException {
         PDDocument doc = generatePage(recipe);
         contentStream.close();
-        String path = pathSavingPDfPage + System.currentTimeMillis()+bookFormat;
+        String path = pathSavingPDfPage + System.currentTimeMillis() + bookFormat;
         doc.save(path);
         doc.close();
         init();
         return path;
     }
 
-    //after coll method - must use method doc.close()
-
+    /**
+     * Generates a page for a recipe document.
+     * After calling this method, ensure to use the method doc.close() to handle document operations.
+     *
+     * @param recipe The recipe for which the page is generated.
+     * @return The generated PDDocument.
+     * @throws IOException If an I/O error occurs during the document generation.
+     */
     private PDDocument generatePage(Recipe recipe) throws IOException {
         addAdditionalPage();
         PDImageXObject logo = PDImageXObject.createFromFile(logoPath, document);

@@ -5,7 +5,7 @@ import com.recipes.dto.measureunit.MeasureUnitDTO;
 import com.recipes.entity.MeasureUnit;
 import com.recipes.repository.MeasureUnitRepository;
 import com.recipes.service.crud.interfaces.MeasureUnitService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

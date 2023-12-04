@@ -6,7 +6,7 @@ import com.recipes.dto.receipt.RecipeDTO;
 import com.recipes.entity.Recipe;
 import com.recipes.repository.RecipeRepository;
 import com.recipes.service.crud.interfaces.RecipeService;
-import com.recipes.service.nullсhecker.NullChecker;
+import com.recipes.service.nullchecker.NullChecker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -57,6 +58,15 @@ public class RecipeServiceImpl implements RecipeService {
     @Transactional
     public List<Recipe> findAllRecipeEntities() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Recipe> findAllRecipeEntitiesByListId(List<Long> listId) {
+        List<Recipe> recipes = new ArrayList<>();
+        for (Long id : listId) {
+            recipes.add(findById(id));
+        }
+        return recipes;
     }
 
     @Transactional

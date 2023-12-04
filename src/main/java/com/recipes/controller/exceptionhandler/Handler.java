@@ -1,7 +1,11 @@
 package com.recipes.controller.exceptionhandler;
 
+import com.recipes.exceptions.ValidationException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.hibernate.TransactionException;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -9,34 +13,88 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartException;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @ControllerAdvice
 @Slf4j
 public class Handler {
-    @Value(value = "${exceptions.handleSQLIntegrityConstraintViolationException}")
-    private String messageHandleSQLIntegrityConstraintViolationException;
 
-    //.ValidationException
-    //RuntimeException
-    //FileSaveException - i've created
-    //FileNotFoundException
-    //NoSuchElementException
-    //IllegalAccessException | InvocationTargetException
-    //IllegalArgumentException
-    //MultipartException
-    //DataIntegrityViolationException
-    //NullPointerException Якщо repository є нульовим (null), буде спричинена помилка NullPointerException.
-    //IllegalArgumentException: Якщо передані параметри name або instruction є null, це може спричинити виникнення помилки IllegalArgumentException.
-    //DataAccessException: Якщо є проблеми з підключенням до бази даних або запит не вдалося виконати через проблеми з базою даних, це може призвести до помилки DataAccessException або його підкласів.
-    //TransactionException: Якщо цей метод знаходиться в межах транзакції і виникає проблема під час збереження даних в базі даних, це може призвести до помилки TransactionException.
-    //InvalidDataAccessApiUsageException: Якщо метод оновлення в репозиторії не був налаштований або викликався з недійсними параметрами, це може призвести до помилки InvalidDataAccessApiUsageException.
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleBadAccountData(IllegalArgumentException e) {
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<String> handleBadAccountData(ValidationException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> handleBadAccountData(RuntimeException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public ResponseEntity<String> handleBadAccountData(FileNotFoundException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<String> handleBadAccountData(NoSuchElementException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(IllegalAccessException.class)
+    public ResponseEntity<String> handleBadAccountData(IllegalAccessException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(InvocationTargetException.class)
+    public ResponseEntity<String> handleBadAccountData(InvocationTargetException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<String> handleBadAccountData(MultipartException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleBadAccountData(DataIntegrityViolationException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<String> handleBadAccountData(NullPointerException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<String> handleBadAccountData(DataAccessException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(TransactionException.class)
+    public ResponseEntity<String> handleBadAccountData(TransactionException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
+    @ExceptionHandler(InvalidDataAccessApiUsageException.class)
+    public ResponseEntity<String> handleBadAccountData(InvalidDataAccessApiUsageException e) {
         log.error(e.getMessage());
         return ResponseEntity.unprocessableEntity().build();
     }
@@ -51,7 +109,7 @@ public class Handler {
     public String handleSQLIntegrityConstraintViolationException(
             SQLIntegrityConstraintViolationException exception) {
         log.error(exception.getMessage());
-        return messageHandleSQLIntegrityConstraintViolationException;
+        return exception.getMessage();
     }
 
     @ResponseBody

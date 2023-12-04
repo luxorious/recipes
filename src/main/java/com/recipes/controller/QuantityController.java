@@ -12,7 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/quantities")
 public class QuantityController {
+
     private final QuantityService service;
+
     @PostMapping("/create")
     public QuantityDTO create(@Valid @RequestBody QuantityDTO dto) {
         return service.create(dto);

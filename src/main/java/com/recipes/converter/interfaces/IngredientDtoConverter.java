@@ -6,6 +6,7 @@ import com.recipes.entity.Ingredient;
 import java.util.List;
 
 public interface IngredientDtoConverter {
+
     IngredientDTO toDto(Ingredient entity);
 
     Ingredient toEntity(IngredientDTO dto);

@@ -15,17 +15,17 @@ public class IngredientController {
     private final IngredientService ingredientService;
 
     @PostMapping("/create")
-    IngredientDTO create(@Valid @RequestBody IngredientDTO dto){
+    IngredientDTO create(@Valid @RequestBody IngredientDTO dto) {
         return ingredientService.create(dto);
     }
 
     @GetMapping("/find-all")
-    List<IngredientDTO> findAllIngredients(){
+    List<IngredientDTO> findAllIngredients() {
         return ingredientService.findAllIngredients();
     }
 
     @DeleteMapping("/delete/{id}")
-    boolean deleteIngredientById(@PathVariable Long id){
+    boolean deleteIngredientById(@PathVariable Long id) {
         return ingredientService.deleteIngredientById(id);
     }
 }

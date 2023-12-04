@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.MERGE;
+import static jakarta.persistence.CascadeType.REFRESH;
 
 @Entity
 @Table(name = "dish_categories")

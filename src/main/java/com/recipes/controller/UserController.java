@@ -67,12 +67,14 @@ public class UserController {
             @PathVariable Long id, @RequestParam String aboutMe) {
         userService.updateUserByIdAndAboutMe(id, aboutMe);
     }
+
     @PutMapping("update-skills/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateUserByIdAndSkills(
             @PathVariable Long id, @RequestParam String skills) {
         userService.updateUserByIdAndSkills(id, skills);
     }
+
     @PutMapping("update-link/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateUserByIdAndLink(

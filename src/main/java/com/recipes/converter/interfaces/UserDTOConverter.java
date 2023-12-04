@@ -8,6 +8,7 @@ import com.recipes.entity.User;
 import java.util.List;
 
 public interface UserDTOConverter {
+
     UserInfoDTO toDtoUserInfo(User user);
 
     User toEntity(CreateUserDTO userDTO);

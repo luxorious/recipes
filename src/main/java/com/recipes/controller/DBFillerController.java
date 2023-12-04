@@ -13,7 +13,7 @@ public class DBFillerController {
     private final DbFiller filler;
 
     @PostMapping("/all")
-    public void fill(){
+    public void fill() {
         filler.fill();
     }
 }
